@@ -1,0 +1,80 @@
+.bio-grid{display:grid;grid-template-columns:1.3fr 0.85fr;gap:clamp(24px,4vw,56px);align-items:start}
+.bio-text p{color:#5a4a2a;line-height:1.9;margin-bottom:18px;font-size:1.05rem}
+.pull-card{background:#fffdf8;border:1.5px solid rgba(184,137,46,0.22);border-radius:26px;padding:30px;text-align:center;margin-bottom:22px;box-shadow:0 8px 28px rgba(100,80,40,0.08)}
+.pq-clef{font-size:3.2rem;color:#b8892e;line-height:1;margin-bottom:14px}
+.pq-quote{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:1.35rem;
+  font-weight:300;
+  font-style:italic;
+  color:#b8892e;
+  line-height:1.6;
+  margin-bottom:22px;
+  text-shadow:0 0 8px rgba(184,137,46,0.45),0 0 22px rgba(184,137,46,0.35);
+}
+
+#about .section-head h2{
+  font-size:clamp(2.2rem,4.2vw,3.6rem);
+}
+
+.name-glow{
+  margin-top:8px;
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:1rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+}
+
+.name-glow span{
+  display:inline-block;
+  color:#f3e4bf;
+  text-shadow:0 0 4px rgba(184,137,46,0.5);
+  animation:nameGlow 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes nameGlow{
+  from{
+    text-shadow:0 0 4px rgba(184,137,46,0.4);
+    transform:translateY(0);
+  }
+  to{
+    text-shadow:0 0 14px rgba(184,137,46,0.9);
+    transform:translateY(-1px);
+  }
+}
+.highlights{display:flex;flex-direction:column;gap:10px}
+.hl{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  font-size:0.9rem;
+  color:#5a4a2a;
+  background:rgba(184,137,46,0.05);
+  border:1px solid rgba(184,137,46,0.14);
+  border-radius:10px;
+  padding:11px 14px;
+  cursor:pointer;
+  transition:background 0.25s,box-shadow 0.25s,transform 0.2s,color 0.25s;
+}
+.hl-icon{color:#b8892e;flex-shrink:0}
+
+.hl.active{
+  background:rgba(184,137,46,0.18);
+  border-color:rgba(184,137,46,0.6);
+  box-shadow:0 0 12px rgba(184,137,46,0.55),0 0 28px rgba(184,137,46,0.35);
+  transform:translateY(-1px);
+  color:#3a2810;
+}
+
+.hl.active .hl-icon{
+  color:#d4a84b;
+}
+
+#about.section.alt{
+  padding:clamp(32px,6vw,70px) clamp(16px,5vw,72px);
+}
+
+@media(max-width:860px){
+  .bio-grid{grid-template-columns:1fr}
+}
+

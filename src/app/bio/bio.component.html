@@ -1,0 +1,83 @@
+<section class="section alt" id="about">
+  <div class="section-wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Biography</span>
+      <h2>Music that feels elevated, warm, and personal</h2>
+      <div class="rule">
+        <div class="rule-line"></div>
+        <span class="rule-note">♪</span>
+        <div class="rule-line rev"></div>
+      </div>
+      <p class="name-glow">
+        @for (ch of nameLetters; track ch; let i = $index) {
+          <span [style.animationDelay.ms]="i * 120">{{ ch }}</span>
+        }
+      </p>
+    </div>
+    <div class="bio-grid">
+      <div class="bio-text reveal">
+        <p>
+          With more than 36 years at the piano, Timothy Layden brings a rare blend of passion,
+          versatility, and professionalism to every performance. His first public debut came at
+          just eight years old, playing in front of hundreds at church — with a broken arm. Since
+          then, he has performed across multiple states, building a reputation for warm, memorable
+          musical experiences.
+        </p>
+        <p>
+          For five years, he held a Saturday residency at Carmella's Italian Restaurant in Dripping
+          Springs, Texas, keeping guests engaged with live piano while they dined. His performance
+          experience also includes weddings, receptions, churches, wine tastings, lounges, community
+          events, and featured appearances such as House of Rock and Omni Hotel ballroom events in
+          Corpus Christi.
+        </p>
+        <p>
+          His style ranges from easy listening and jazz to pop, classical, and request-friendly
+          sets. Whether the goal is elegant background music or a more interactive live experience,
+          Timothy reads the room and shapes the atmosphere with care.
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="pull-card">
+          <div class="pq-clef">𝄞</div>
+          <p class="pq-quote">
+            <span>Soft Touches – </span>
+            Music touches your soul without your control.
+            <span> – Timothy Layden</span>
+          </p>
+          <div class="css-keys">
+            <div class="key-wrap">
+              <div class="wk"></div>
+              <div class="bk"></div>
+              <div class="wk"></div>
+              <div class="bk"></div>
+              <div class="wk"></div>
+              <div class="wk"></div>
+              <div class="bk"></div>
+              <div class="wk"></div>
+              <div class="bk"></div>
+              <div class="wk"></div>
+              <div class="bk"></div>
+              <div class="wk"></div>
+            </div>
+          </div>
+        </div>
+        <div class="highlights">
+          @for (h of data.highlights; track h) {
+            <div
+              class="hl"
+              role="button"
+              tabindex="0"
+              (click)="setActiveHighlight(h)"
+              (keyup.enter)="setActiveHighlight(h)"
+              [class.active]="activeHighlight === h"
+            >
+              <span class="hl-icon">♩</span>
+              <span>{{ h }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

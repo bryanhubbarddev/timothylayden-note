@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.angular/
+.firebase/
+firebase-debug.log
+npm-debug.log
+.DS_Store
