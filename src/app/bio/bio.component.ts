@@ -13,7 +13,7 @@ export class BioComponent {
   @Input() data!: SiteData;
 
   activeHighlight: string | null = null;
-  nameLetters = 'Timothy Layden'.split('');
+  nameLetters = ['T','i','m','o','t','h','y','-',' ','L','a','y','d','e','n'];
 
   setActiveHighlight(text: string) {
     this.activeHighlight = this.activeHighlight === text ? null : text;
