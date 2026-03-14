@@ -1,0 +1,74 @@
+.footer {
+  background: rgba(237, 230, 216, 0.85);
+  border-top: 1px solid rgba(184, 137, 46, 0.18);
+  padding: 30px clamp(16px, 5vw, 72px) 140px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.brand-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent, #b8892e), #d4a84b);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(184, 137, 46, 0.3);
+}
+.brand-initials {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fff8ee;
+}
+.footer-name {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
+  color: var(--color-text, #1a1208);
+}
+.footer-sub {
+  font-size: 0.68rem;
+  color: #7a6040;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+.footer-copy {
+  font-size: 0.74rem;
+  color: #7a6040;
+}
+.footer-keys {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+}
+.fwk {
+  width: 12px;
+  height: 20px;
+  background: linear-gradient(to bottom, #fdfaf5, #ede8df);
+  border: 1px solid #c0b49a;
+  border-radius: 0 0 3px 3px;
+}
+.fbk {
+  width: 8px;
+  height: 14px;
+  background: linear-gradient(170deg, #2e2416, #18110c);
+  border-radius: 0 0 2px 2px;
+}
+@media (max-width: 600px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}

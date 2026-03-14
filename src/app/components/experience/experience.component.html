@@ -1,0 +1,18 @@
+<section class="section" id="experience" aria-labelledby="exp-heading">
+  <div class="section-wrap">
+    <div class="section-head" appRevealOnScroll>
+      <span class="eyebrow">Performance Experience</span>
+      <h2 id="exp-heading">Designed for events that need atmosphere and polish</h2>
+      <div class="rule"><div class="rule-line"></div><span class="rule-note">♩</span><div class="rule-line rev"></div></div>
+    </div>
+    <div class="exp-grid">
+      @for (e of experience; track e.title) {
+        <div class="exp-card" appRevealOnScroll>
+          <div class="exp-emoji">{{ e.icon }}</div>
+          <h3>{{ e.title }}</h3>
+          <p>{{ e.detail }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

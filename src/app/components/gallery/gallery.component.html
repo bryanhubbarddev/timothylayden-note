@@ -1,0 +1,20 @@
+<section class="section" id="gallery" aria-labelledby="gal-heading">
+  <div class="section-wrap">
+    <div class="section-head" appRevealOnScroll>
+      <span class="eyebrow">Gallery</span>
+      <h2 id="gal-heading">Stage presence with a bold piano-inspired visual identity</h2>
+      <div class="rule"><div class="rule-line"></div><span class="rule-note">♪</span><div class="rule-line rev"></div></div>
+    </div>
+    <div class="gal-grid">
+      @for (img of gallery; track img.alt) {
+        <figure class="gal-card" appRevealOnScroll>
+          <div class="gal-img">
+            <span class="gal-icon" aria-hidden="true">𝄞</span>
+            <img [src]="img.src" [alt]="img.alt" loading="lazy">
+            <div class="gal-overlay"><p class="gal-caption">{{ img.caption }}</p></div>
+          </div>
+        </figure>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow hero-enter d1">✦ Live Piano Performance ✦</span>
+      <h1 id="hero-heading" class="hero-h1 hero-enter d2">
+        <span>Creating</span>
+        <span class="ig">Unforgettable</span>
+        <span>Experiences</span>
+      </h1>
+      <p class="hero-sub hero-enter d3">{{ subheadlineParts.before }}<span class="hero-sub-name">
+        @for (part of displayNameParts; track $index) {
+          @if (part.type === 'note') {
+            <span class="hero-name-note">{{ part.symbol || '♪' }}</span>
+          } @else {
+            {{ part.value }}
+          }
+        }
+      </span>{{ subheadlineParts.after }}</p>
+      <div class="btn-row hero-enter d4">
+        <button type="button" (click)="scrollTo('contact')" class="btn-gold"><span>Request Booking</span><span>→</span></button>
+        <button type="button" (click)="scrollTo('experience')" class="btn-outline">View Experience</button>
+      </div>
+      <div class="loc-row hero-enter d5">
+        <span class="loc-dot"></span>{{ data.location }}
+      </div>
+    </div>
+    <div class="hero-enter d3">
+      <div class="stats-card">
+        <p class="card-label">Career at a glance</p>
+        <div class="stats-4">
+          @for (s of data.stats; track s.label) {
+            <div class="stat-box">
+              <p class="stat-num">{{ s.value }}</p>
+              <p class="stat-lbl">{{ s.label }}</p>
+            </div>
+          }
+        </div>
+        <p class="focus-title">Booking Focus</p>
+        <div class="focus-items">
+          @for (f of data.focus; track f.label) {
+            @if (f.url) {
+              <a [href]="f.url" target="_blank" rel="noopener noreferrer" class="focus-item">
+                <span>{{ f.icon }}</span><span>{{ f.label }}</span>
+              </a>
+            } @else {
+              <button type="button" class="focus-item" (click)="scrollTo('contact')">
+                <span>{{ f.icon }}</span><span>{{ f.label }}</span>
+              </button>
+            }
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-bar"></div>
+    <span>Scroll</span>
+  </div>
+</section>

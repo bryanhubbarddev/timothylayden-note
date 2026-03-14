@@ -1,0 +1,92 @@
+.piano-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  height: 115px;
+  padding-top: 12px;
+  pointer-events: none;
+  overflow: visible;
+}
+.piano-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to bottom, transparent, rgba(245, 239, 230, 0.6));
+  z-index: 4;
+}
+.piano-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    var(--color-bg, #f5efe6) 0%,
+    transparent 40px,
+    transparent calc(100% - 40px),
+    var(--color-bg, #f5efe6) 100%
+  );
+  z-index: 3;
+  pointer-events: none;
+}
+.keys-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  height: 92px;
+  z-index: 5;
+  display: flex;
+  width: 100%;
+}
+.keys-segment {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  height: 92px;
+  overflow: hidden;
+}
+.keys-row-inner {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 360px;
+  height: 92px;
+  transform: scaleX(calc((100vw / 3) / 360));
+  transform-origin: left bottom;
+}
+.wk {
+  position: absolute;
+  width: 36px;
+  height: 92px;
+  background: linear-gradient(to bottom, #fdfaf5 0%, #ede8df 100%);
+  border: 1px solid #c0b49a;
+  border-top: 2px solid #ddd5c0;
+  border-radius: 0 0 6px 6px;
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.07), 2px 5px 10px rgba(0, 0, 0, 0.12);
+  z-index: 1;
+}
+.bk {
+  position: absolute;
+  width: 23px;
+  height: 57px;
+  background: linear-gradient(170deg, #2e2416 0%, #18110c 55%, #2e2416 100%);
+  border: 1px solid #0a0806;
+  border-radius: 0 0 5px 5px;
+  box-shadow: inset 0 -2px 4px rgba(255, 255, 255, 0.06), 2px 7px 12px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.bk::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 3px;
+  right: 3px;
+  height: 16px;
+  background: linear-gradient(to bottom, rgba(201, 168, 76, 0.18), transparent);
+  border-radius: 2px;
+}

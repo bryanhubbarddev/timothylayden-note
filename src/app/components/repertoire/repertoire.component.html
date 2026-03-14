@@ -1,0 +1,15 @@
+<section class="section alt" id="repertoire" aria-labelledby="rep-heading">
+  <div class="section-wrap">
+    <div class="section-head" appRevealOnScroll>
+      <span class="eyebrow">Repertoire &amp; Style</span>
+      <h2 id="rep-heading">Versatile music for mixed audiences and elegant venues</h2>
+      <div class="rule"><div class="rule-line"></div><span class="rule-note">♫</span><div class="rule-line rev"></div></div>
+    </div>
+    <div class="rep-pills" appRevealOnScroll>
+      @for (r of repertoire; track r.name) {
+        <div class="pill">{{ r.icon }} {{ r.name }}</div>
+      }
+    </div>
+    <p class="rep-footnote" appRevealOnScroll>Request-friendly sets — Timothy reads the room and keeps the vibe flowing.</p>
+  </div>
+</section>

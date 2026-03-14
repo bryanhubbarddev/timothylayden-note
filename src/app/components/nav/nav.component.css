@@ -1,0 +1,99 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(16px, 4vw, 52px);
+  background: rgba(245, 239, 230, 0.93);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(184, 137, 46, 0.18);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex: 1;
+}
+.brand-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent, #b8892e), #d4a84b);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(184, 137, 46, 0.3);
+}
+.brand-initials {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: #fff8ee;
+}
+.brand-tag {
+  display: block;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-accent, #b8892e);
+  line-height: 1;
+}
+.brand-name-text {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text, #1a1208);
+  line-height: 1.2;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.nav-links a,
+.nav-links button {
+  font-size: 0.84rem;
+  color: #5a4a2a;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.nav-links a:hover,
+.nav-links button:hover {
+  color: var(--color-accent, #b8892e);
+}
+.nav-book {
+  background: linear-gradient(135deg, var(--color-accent, #b8892e), #d4a84b) !important;
+  color: #fff8ee !important;
+  padding: 9px 20px !important;
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  font-size: 0.82rem !important;
+  box-shadow: 0 2px 12px rgba(184, 137, 46, 0.25) !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+.nav-book:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(184, 137, 46, 0.4) !important;
+}
+@media (max-width: 860px) {
+  .nav-links {
+    display: none;
+  }
+}

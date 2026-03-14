@@ -1,0 +1,18 @@
+<header class="navbar" role="banner">
+  <nav class="nav-inner" aria-label="Main">
+    <div class="brand">
+      <div class="brand-circle"><span class="brand-initials">TL</span></div>
+      <div class="brand-label">
+        <span class="brand-tag">Live Piano</span>
+        <span class="brand-name-text">{{ stageName }}</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <button type="button" (click)="scrollTo('about')">About</button>
+      <button type="button" (click)="scrollTo('experience')">Experience</button>
+      <button type="button" (click)="scrollTo('repertoire')">Repertoire</button>
+      <button type="button" (click)="scrollTo('gallery')">Gallery</button>
+      <button type="button" (click)="scrollTo('contact')" class="nav-book">Book Now</button>
+    </div>
+  </nav>
+</header>

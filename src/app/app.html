@@ -1,221 +1,23 @@
-<!-- floating notes overlay -->
-<div class="notes-layer" aria-hidden="true">
-  <span class="note n1">♩</span>
-  <span class="note n2">♪</span>
-  <span class="note n3">𝄞</span>
-  <span class="note n4">♫</span>
-  <span class="note n5">𝄢</span>
-  <span class="note n6">♬</span>
-  <span class="note n7">♪</span>
-  <span class="note n8">♩</span>
-</div>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- fixed piano keyboard at bottom -->
-<div class="piano-bar" aria-hidden="true">
-  <div class="keys-row">
-    <!-- simple repeating white / black key pattern -->
-    <div class="wk" style="left:0px"></div>
-    <div class="wk" style="left:36px"></div>
-    <div class="wk" style="left:72px"></div>
-    <div class="wk" style="left:108px"></div>
-    <div class="wk" style="left:144px"></div>
-    <div class="wk" style="left:180px"></div>
-    <div class="wk" style="left:216px"></div>
-    <div class="wk" style="left:252px"></div>
-    <div class="wk" style="left:288px"></div>
-    <div class="wk" style="left:324px"></div>
-
-    <div class="bk" style="left:24px"></div>
-    <div class="bk" style="left:60px"></div>
-    <div class="bk" style="left:132px"></div>
-    <div class="bk" style="left:168px"></div>
-    <div class="bk" style="left:204px"></div>
-    <div class="bk" style="left:276px"></div>
-    <div class="bk" style="left:312px"></div>
-  </div>
-</div>
+<app-floating-notes />
+<app-piano-bar />
 
 <div class="shell">
+  <app-nav [stageName]="d.stageName" />
 
-  <!-- NAV -->
-  <header class="navbar">
-    <nav class="nav-inner">
-      <div class="brand">
-        <div class="brand-circle"><span class="brand-initials">TL</span></div>
-        <div class="brand-label">
-          <span class="brand-tag">Live Piano</span>
-          <span class="brand-name-text">{{ d.stageName }}</span>
-        </div>
-      </div>
-      <div class="nav-links">
-        <button type="button" (click)="scrollTo('about')">About</button>
-        <button type="button" (click)="scrollTo('experience')">Experience</button>
-        <button type="button" (click)="scrollTo('repertoire')">Repertoire</button>
-        <button type="button" (click)="scrollTo('gallery')">Gallery</button>
-        <button type="button" (click)="scrollTo('contact')" class="nav-book">Book Now</button>
-      </div>
-    </nav>
-  </header>
+  <app-hero [data]="d" />
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-glow2"></div>
-    <div class="hero-grid">
-      <div>
-        <span class="eyebrow hero-enter d1">✦ Live Piano Performance ✦</span>
-        <h1 class="hero-h1 hero-enter d2">
-          <span>Creating</span>
-          <span class="ig">Unforgettable</span>
-          <span>Experiences</span>
-        </h1>
-        <p class="hero-sub hero-enter d3">{{ d.subheadline }}</p>
-        <div class="btn-row hero-enter d4">
-          <button type="button" (click)="scrollTo('contact')" class="btn-gold"><span>Request Booking</span><span>→</span></button>
-          <button type="button" (click)="scrollTo('experience')" class="btn-outline">View Experience</button>
-        </div>
-        <div class="loc-row hero-enter d5">
-          <span class="loc-dot"></span>{{ d.location }}
-        </div>
-      </div>
-      <div class="hero-enter d3">
-        <div class="stats-card">
-          <p class="card-label">Career at a glance</p>
-          <div class="stats-4">
-            @for (s of d.stats; track s) {
-              <div class="stat-box">
-                <p class="stat-num">{{ s.value }}</p>
-                <p class="stat-lbl">{{ s.label }}</p>
-              </div>
-            }
-          </div>
-          <p class="focus-title">Booking Focus</p>
-          <div class="focus-items">
-            @for (f of d.focus; track f) {
-              <div class="focus-item">
-                <span>{{ f.icon }}</span><span>{{ f.label }}</span>
-              </div>
-            }
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-hint">
-      <div class="scroll-bar"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
-
-  <main>
-
-    <!-- ABOUT -->
-    <app-bio [data]="d"></app-bio>
-
-    <!-- EXPERIENCE -->
-    <section class="section" id="experience">
-      <div class="section-wrap">
-        <div class="section-head reveal">
-          <span class="eyebrow">Performance Experience</span>
-          <h2>Designed for events that need atmosphere and polish</h2>
-          <div class="rule"><div class="rule-line"></div><span class="rule-note">♩</span><div class="rule-line rev"></div></div>
-        </div>
-        <div class="exp-grid">
-          @for (e of d.experience; track e) {
-            <div class="exp-card reveal">
-              <div class="exp-emoji">{{ e.icon }}</div>
-              <h3>{{ e.title }}</h3>
-              <p>{{ e.detail }}</p>
-            </div>
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- REPERTOIRE -->
-    <section class="section alt" id="repertoire">
-      <div class="section-wrap">
-        <div class="section-head reveal">
-          <span class="eyebrow">Repertoire &amp; Style</span>
-          <h2>Versatile music for mixed audiences and elegant venues</h2>
-          <div class="rule"><div class="rule-line"></div><span class="rule-note">♫</span><div class="rule-line rev"></div></div>
-        </div>
-        <div class="rep-pills reveal">
-          @for (r of d.repertoire; track r) {
-            <div class="pill">{{ r.icon }} {{ r.name }}</div>
-          }
-        </div>
-        <p class="rep-footnote reveal">Request-friendly sets — Timothy reads the room and keeps the vibe flowing.</p>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="section" id="gallery">
-      <div class="section-wrap">
-        <div class="section-head reveal">
-          <span class="eyebrow">Gallery</span>
-          <h2>Stage presence with a bold piano-inspired visual identity</h2>
-          <div class="rule"><div class="rule-line"></div><span class="rule-note">♪</span><div class="rule-line rev"></div></div>
-        </div>
-        <div class="gal-grid">
-          @for (img of d.gallery; track img) {
-            <figure class="gal-card reveal">
-              <div class="gal-img">
-                🎹
-                <img [src]="img.src" [alt]="img.alt" loading="lazy">
-                <div class="gal-overlay"><p class="gal-caption">{{ img.caption }}</p></div>
-              </div>
-            </figure>
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section alt" id="contact">
-      <div class="section-wrap">
-        <div class="contact-panel reveal">
-          <div class="contact-left">
-            <span class="eyebrow">Ready to Book?</span>
-            <h2>Bring live piano to your next event</h2>
-            <p class="contact-desc">Available for upscale restaurants, lounges, wine tastings, receptions, cocktail hours, churches, and private events across Florida and beyond.</p>
-            <p class="contact-desc">Live piano that keeps guests engaged, relaxed, and coming back.</p>
-            <div class="avail-badge"><span class="avail-dot"></span><span>Currently accepting bookings</span></div>
-          </div>
-          <div>
-            <div class="contact-card">
-              <p class="card-label">Direct Booking Contact</p>
-              <h3 class="contact-name">{{ d.bookingContact }}</h3>
-              <a [href]="'mailto:' + d.bookingEmail" class="contact-email-link">
-                <span>✉</span> {{ d.bookingEmail }}
-              </a>
-              <div class="divider"></div>
-              <a [href]="'mailto:' + d.bookingEmail" class="btn-full">
-                <span>Send a Message</span><span>→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+  <main id="main-content">
+    <app-bio [data]="d" />
+    <app-experience [experience]="d.experience" />
+    <app-repertoire [repertoire]="d.repertoire" />
+    <app-gallery [gallery]="d.gallery" />
+    <app-contact
+      [bookingEmail]="d.bookingEmail"
+      [bookingContact]="d.bookingContact"
+    />
   </main>
 </div>
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="brand-circle" style="width:36px;height:36px"><span class="brand-initials" style="font-size:0.8rem">TL</span></div>
-      <div>
-        <p class="footer-name">{{ d.stageName }}</p>
-        <p class="footer-sub">Live Piano Performance</p>
-      </div>
-    </div>
-    <p class="footer-copy">© {{ year }} {{ d.stageName }}. All rights reserved.</p>
-    <div class="footer-keys">
-      <div class="fwk"></div><div class="fwk"></div><div class="fbk"></div>
-      <div class="fwk"></div><div class="fbk"></div><div class="fwk"></div>
-      <div class="fbk"></div><div class="fwk"></div><div class="fwk"></div>
-      <div class="fbk"></div><div class="fwk"></div>
-    </div>
-  </div>
-</footer>
+<app-footer [stageName]="d.stageName" />

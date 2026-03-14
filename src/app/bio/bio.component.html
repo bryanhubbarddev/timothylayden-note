@@ -1,38 +1,83 @@
-<section class="section alt" id="about">
+<section class="section alt" id="about" aria-labelledby="bio-heading">
   <div class="section-wrap">
-    <div class="section-head reveal">
+    <div class="section-head" appRevealOnScroll>
       <span class="eyebrow">Biography</span>
-      <h2>Music that feels elevated, warm, and personal</h2>
+      <h2 id="bio-heading">Music that feels elevated, warm, and personal</h2>
       <div class="rule">
         <div class="rule-line"></div>
         <span class="rule-note">♪</span>
         <div class="rule-line rev"></div>
       </div>
       <p class="name-glow">
-        @for (ch of nameLetters; track ch; let i = $index) {
-          <span [style.animationDelay.ms]="i * 120">{{ ch }}</span>
+        @for (ch of nameLetters; track $index; let i = $index) {
+          <span [style.animationDelay.ms]="i * 120" [class.name-glow-note]="ch === '♪' || ch === '♫'">{{ ch }}</span>
         }
       </p>
     </div>
     <div class="bio-grid">
-      <div class="bio-text reveal">
+      <div class="bio-text" appRevealOnScroll>
         <p>
-          With more than 36 years at the piano, <span class="bio-strong">Timothy Layden</span> brings a rare blend of <span class="bio-strong">passion</span>, <span class="bio-strong">versatility</span>, and <span class="bio-strong">professionalism</span> to every performance. His first public debut came at just eight years old, playing in front of hundreds at church — with a broken arm. Since then, he has performed across multiple states, building a reputation for <span class="bio-soft">warm, memorable musical experiences</span>.
+          With more than 36 years at the piano,
+          <span class="bio-name">
+          @for (part of displayNameParts; track $index) {
+            @if (part.type === 'note') {
+              <span class="bio-name-note">{{ part.symbol || '♪' }}</span>
+            } @else {
+              {{ part.value }}
+            }
+          }
+        </span> brings a rare blend of
+          <span class="bio-strong">passion</span>,
+          <span class="bio-strong">versatility</span>, and
+          <span class="bio-strong">professionalism</span> to every performance.
+          His first public debut came at just eight years old, playing in front
+          of hundreds at church — with a broken arm. Since then, he has
+          performed across multiple states, building a reputation for
+          <span class="bio-soft">warm, memorable musical experiences</span>.
         </p>
         <p>
-          Over the years, Timothy has played everything from intimate <span class="bio-soft">coffee shops</span> to large venues such as <span class="bio-strong">House of Rock</span> and high‑energy <span class="bio-strong">"Dancing with the Stars"–style dance events</span>. He has been featured at fundraisers and community events supporting organizations like local <span class="bio-strong">Police Unions</span>, the <span class="bio-strong">Salvation Army</span>, and other charitable causes — always using music to bring people together.
+          Over the years, Timothy has played everything from intimate
+          <span class="bio-soft">coffee shops</span> to large venues such as
+          <span class="bio-strong">House of Rock</span> and high‑energy
+          <span class="bio-strong"
+            >"Dancing with the Stars"–style dance events</span
+          >. He has been featured at fundraisers and community events supporting
+          organizations like local
+          <span class="bio-strong">Police Unions</span>, the
+          <span class="bio-strong">Salvation Army</span>, and other charitable
+          causes — always using music to bring people together.
         </p>
         <p>
-          His experience also includes appearances with multiple <span class="bio-strong">symphony associations</span> and collaborations with a <span class="bio-strong">renowned trumpet soloist</span>. A lifelong student of showmanship, Timothy was mentored by a pianist connected to the legacy of <span class="bio-strong">Liberace</span>, and he carries a personal dream of one day performing at <span class="bio-strong">Carnegie Hall</span>. His style ranges from <span class="bio-soft">easy listening and jazz</span> to <span class="bio-soft">pop, classical, and request‑friendly sets</span>. Whether the goal is elegant background music or a more interactive live experience, Timothy reads the room and <span class="bio-strong">shapes the atmosphere with care</span>.
+          His experience also includes appearances with multiple
+          <span class="bio-strong">symphony associations</span> and
+          collaborations with a
+          <span class="bio-strong">renowned trumpet soloist</span>. A lifelong
+          student of showmanship, Timothy was mentored by a pianist connected to
+          the legacy of <span class="bio-strong">Liberace</span>, and he carries
+          a personal dream of one day performing at
+          <span class="bio-strong">Carnegie Hall</span>. His style ranges from
+          <span class="bio-soft">easy listening and jazz</span> to
+          <span class="bio-soft">pop, classical, and request‑friendly sets</span
+          >. Whether the goal is elegant background music or a more interactive
+          live experience, Timothy reads the room and
+          <span class="bio-strong">shapes the atmosphere with care</span>.
         </p>
       </div>
-      <div class="reveal">
+      <div appRevealOnScroll>
         <div class="pull-card">
           <div class="pq-clef">𝄞</div>
           <p class="pq-quote">
             <span>Soft Touches – </span>
             Music touches your soul without your control.
-            <span> – Timothy Layden</span>
+            <span> – <span class="bio-name">
+            @for (part of displayNameParts; track $index) {
+              @if (part.type === 'note') {
+                <span class="bio-name-note">{{ part.symbol || '♪' }}</span>
+              } @else {
+                {{ part.value }}
+              }
+            }
+          </span></span>
           </p>
           <div class="css-keys">
             <div class="key-wrap">
@@ -70,4 +115,3 @@
     </div>
   </div>
 </section>
-
