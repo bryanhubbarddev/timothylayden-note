@@ -1,7 +1,23 @@
+# Dependencies & build
 node_modules/
 dist/
 .angular/
+
+# Firebase
 .firebase/
 firebase-debug.log
-npm-debug.log
+firebase-debug.*.log
+
+# Logs
+npm-debug.log*
+*.log
+
+# OS & IDE
 .DS_Store
+.idea/
+*.swp
+*.swo
+
+# Optional: uncomment to keep real Firebase config out of the repo
+# src/environments/environment.ts
+# src/environments/environment.production.ts
