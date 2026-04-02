@@ -26,7 +26,10 @@
         <span class="loc-dot"></span>{{ data.location }}
       </div>
     </div>
-    <div class="hero-enter d3">
+    <div class="hero-visual hero-enter d3">
+      <figure class="hero-photo">
+        <img [src]="data.heroImage" [alt]="data.heroImageAlt" width="640" height="800" loading="eager" fetchpriority="high" />
+      </figure>
       <div class="stats-card">
         <p class="card-label">Career at a glance</p>
         <div class="stats-4">

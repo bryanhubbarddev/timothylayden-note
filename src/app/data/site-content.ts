@@ -29,6 +29,9 @@ export interface SiteVideo {
 export interface SiteData {
   stageName: string;
   subheadline: string;
+  /** Front-page hero photo path under assets/, e.g. assets/TimFront.png */
+  heroImage: string;
+  heroImageAlt: string;
   bookingEmail: string;
   bookingContact: string;
   location: string;
@@ -45,7 +48,9 @@ export const siteContent: SiteData = {
   stageName: "Timothy Layden",
   subheadline:
     "With more than 36 years at the piano, Timothy Layden brings elegance, versatility, and warmth to restaurants, weddings, churches, cocktail hours, receptions, and special events.",
-  bookingEmail: "booking@timothylayden.com",
+  heroImage: "assets/TimFront.png",
+  heroImageAlt: "Timothy Layden — live piano performer",
+  bookingEmail: "Timothy.Layden@yahoo.com",
   bookingContact: "Timothy Layden",
   location: "Based in Florida • Available Statewide & Beyond",
   stats: [

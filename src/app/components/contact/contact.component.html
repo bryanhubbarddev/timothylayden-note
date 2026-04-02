@@ -12,11 +12,11 @@
         <div class="contact-card">
           <p class="card-label">Direct Booking Contact</p>
           <h3 class="contact-name">{{ bookingContact }}</h3>
-          <a [href]="'mailto:' + bookingEmail" class="contact-email-link">
+          <a [href]="bookingMailto" class="contact-email-link">
             <span aria-hidden="true">✉</span> {{ bookingEmail }}
           </a>
           <div class="divider"></div>
-          <a [href]="'mailto:' + bookingEmail" class="btn-full">
+          <a [href]="bookingMailto" class="btn-full">
             <span>Send the Message</span><span>→</span>
           </a>
         </div>

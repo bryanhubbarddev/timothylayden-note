@@ -11,4 +11,11 @@ import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.direc
 export class ContactComponent {
   @Input() bookingEmail = '';
   @Input() bookingContact = '';
+
+  /** mailto: with subject so booking clicks open the user's email app addressed to Timothy. */
+  get bookingMailto(): string {
+    if (!this.bookingEmail.trim()) return '';
+    const subject = encodeURIComponent('Booking inquiry — live piano');
+    return `mailto:${this.bookingEmail.trim()}?subject=${subject}`;
+  }
 }
