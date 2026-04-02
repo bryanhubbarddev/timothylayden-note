@@ -20,6 +20,12 @@ export interface SiteGalleryItem {
   caption: string;
 }
 
+/** YouTube/Vimeo embed URL, e.g. https://www.youtube.com/embed/VIDEO_ID */
+export interface SiteVideo {
+  title: string;
+  embedSrc: string;
+}
+
 export interface SiteData {
   stageName: string;
   subheadline: string;
@@ -32,6 +38,7 @@ export interface SiteData {
   experience: SiteExperience[];
   repertoire: SiteRepertoireItem[];
   gallery: SiteGalleryItem[];
+  videos: SiteVideo[];
 }
 
 export const siteContent: SiteData = {
@@ -96,19 +103,41 @@ export const siteContent: SiteData = {
   ],
   gallery: [
     {
-      src: "assets/timmy-piano-stage-1.jpg",
-      alt: "Timothy Layden performing on stage",
-      caption: "Stage Performance",
+      src: "assets/TimPiano.png",
+      alt: "Timothy Layden at the piano",
+      caption: "At the piano",
     },
     {
-      src: "assets/timmy-piano-red-shirt.jpg",
-      alt: "Timothy Layden at a private event",
-      caption: "Private Event",
+      src: "assets/TimSmile.png",
+      alt: "Timothy Layden smiling",
+      caption: "Live performance",
     },
     {
-      src: "assets/timmy-shirt-detail.jpg",
-      alt: "Piano-themed performance attire",
-      caption: "Brand Aesthetic",
+      src: "assets/TimNavarre.png",
+      alt: "Timothy Layden in Navarre",
+      caption: "Navarre",
+    },
+    {
+      src: "assets/TimBryan.png",
+      alt: "Timothy Layden performing",
+      caption: "On stage",
+    },
+    {
+      src: "assets/TimArms.png",
+      alt: "Timothy Layden at the keyboard",
+      caption: "Performance moment",
+    },
+    {
+      src: "assets/TimGlass.png",
+      alt: "Timothy Layden",
+      caption: "Portrait",
+    },
+    {
+      src: "assets/TimStar.png",
+      alt: "Timothy Layden in the spotlight",
+      caption: "In the spotlight",
     },
   ],
+  /** Add { title, embedSrc } entries; embedSrc = YouTube embed URL. Empty = videos block hidden. */
+  videos: [],
 };
