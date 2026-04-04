@@ -1,7 +1,11 @@
 import { Component, HostListener, Input, inject } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.directive';
-import type { SiteGalleryItem, SiteVideo } from '../../data/site-content';
+import type {
+  SiteExternalPhotoAlbum,
+  SiteGalleryItem,
+  SiteVideo,
+} from '../../data/site-content';
 
 @Component({
   selector: 'app-gallery',
@@ -13,6 +17,7 @@ import type { SiteGalleryItem, SiteVideo } from '../../data/site-content';
 export class GalleryComponent {
   @Input({ required: true }) gallery!: SiteGalleryItem[];
   @Input() videos: SiteVideo[] = [];
+  @Input() photoAlbumLinks: SiteExternalPhotoAlbum[] = [];
 
   private sanitizer = inject(DomSanitizer);
 
@@ -20,6 +25,10 @@ export class GalleryComponent {
 
   safeEmbed(url: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  videoTrackKey(v: SiteVideo): string {
+    return `${v.title}-${v.fileSrc ?? ''}-${v.embedSrc ?? ''}`;
   }
 
   openLightbox(img: SiteGalleryItem): void {

@@ -41,6 +41,8 @@ Angular 19 single-page site for a live pianist: hero (with portrait), bio, exper
 ## Project structure
 
 ```
+.env.example            # Template for repo-root `.env` (Gemini + Firebase)
+scripts/sync-env.cjs    # Generates `src/environments/secrets.generated.ts` from `.env`
 src/app/
 ├── app.ts              # Root; injects SiteContentService, exposes d: SiteData
 ├── app.html            # Shell; passes d (or slices) to children
@@ -50,6 +52,7 @@ src/app/
 │   └── site-content.ts # SiteData interface + siteContent constant
 ├── services/
 │   ├── site-content.service.ts  # getContent(): SiteData
+│   ├── booking-assistant.service.ts  # Gemini API (uses environment)
 │   └── scroll.service.ts        # scrollTo(id: string)
 ├── directives/
 │   └── reveal-on-scroll.directive.ts
@@ -62,7 +65,8 @@ src/app/
 │   ├── contact/        # [bookingEmail] [bookingContact] — mailto + subject
 │   ├── footer/         # [stageName]
 │   ├── floating-notes/ # decorative
-│   └── piano-bar/      # decorative
+│   ├── piano-bar/      # decorative
+│   └── booking-assistant/  # floating Gemini chat
 └── bio/                # [data] — full SiteData
 ```
 
@@ -73,10 +77,13 @@ Global base styles for `html` / `body` live in **`src/styles.css`** (so the crea
 ## Run, build, lint
 
 ```bash
-npm install
-ng serve
+npm install          # runs env:sync → creates secrets.generated.ts
+cp .env.example .env # optional; add keys to `.env`
+npm start            # prestart runs env:sync, then ng serve
 # → http://localhost:4200
 ```
+
+Use **`npm start`** / **`npm run build`** so **`env:sync`** runs first. Plain **`ng serve`** skips that unless you already ran **`npm run env:sync`**.
 
 ```bash
 ng build
@@ -98,7 +105,8 @@ Edit **`src/app/data/site-content.ts`** — the `siteContent` object and `SiteDa
 | `stageName`, `subheadline`, `location`, etc. | Hero copy, stats, focus list |
 | **`heroImage`**, **`heroImageAlt`** | Front-page portrait path (e.g. `assets/TimFront.png`) and accessible description |
 | **`gallery`** | Array of `{ src, alt, caption }` — files under `src/assets/`; thumbnails show full image; click opens lightbox |
-| **`videos`** | Optional `{ title, embedSrc }` — full **embed** URL (YouTube `…/embed/…`, Vimeo player URL). Empty `[]` hides the Videos block |
+| **`videos`** | Each item: `{ title, fileSrc? }` for **MP4/WebM** in `src/assets/`, or `{ title, embedSrc? }` for **YouTube/Vimeo** iframe URL (one of the two per row). Empty `[]` hides the Videos block. Google Photos albums belong in **`photoAlbumLinks`**, not here |
+| **`photoAlbumLinks`** | Array of `{ url, label }` (e.g. one [Google Photos](https://photos.app.goo.gl/) archive link). Shown below the gallery grid; each opens in a new tab. Use `[]` to hide |
 | **`bookingEmail`**, **`bookingContact`** | Contact card; links use `mailto:` with a booking **subject** line |
 
 **Assets:** Place images in **`src/assets/`** and reference them as `assets/YourFile.png` in `site-content.ts`.
@@ -115,7 +123,21 @@ npm run deploy        # production build + firebase deploy
 
 Hosting output is configured in **`firebase.json`** (`public` → `dist/timothylayden-note/browser` after `ng build`).
 
-Optional: configure **`src/environments/environment.ts`** and **`environment.production.ts`** if you use Firebase SDK features beyond Hosting.
+### Environment variables (`.env`)
+
+**Firebase** and **Gemini** settings are loaded from a **repo-root `.env`** file (gitignored). On **`npm install`**, **`npm start`**, **`npm run build`**, and **`npm test`**, **`npm run env:sync`** runs first and generates **`src/environments/secrets.generated.ts`** (also gitignored).
+
+1. **`.env.example`** is committed with safe defaults (e.g. Firebase project id/domain). **`npm run env:sync`** loads it first, then merges **`.env`** on top (so secrets live only in **`.env`**).
+2. Copy **`.env.example`** → **`.env`** and fill in **API keys** and ids from [Firebase Console](https://console.firebase.google.com/) → Project settings → Your apps → Web, and [Google AI Studio](https://aistudio.google.com/) for Gemini.
+3. Run **`npm run env:sync`** if you change `.env` while the dev server is already running (or restart **`npm start`**).
+
+**CI/CD:** Before `ng build`, create `.env` from secrets (e.g. `printenv` / heredoc in the workflow) or export the same variable names into the environment; **`sync-env.cjs`** reads **`process.env`** after loading `.env`, so variables already set in the job are kept.
+
+**Privacy:** `.env` does not go to GitHub when ignored. Anything still **bundled into the browser** (Firebase web config, Gemini key) can be read by a determined visitor; restrict API keys in Google Cloud, and use a **backend proxy** for Gemini if you need the key to stay server-only.
+
+### Booking helper (optional Gemini chat)
+
+The **Booking helper** uses **`GEMINI_API_KEY`** and optional **`GEMINI_MODEL`** from **`.env`**. If the key is empty, the UI still appears but prompts visitors to use **email** instead. Replies are grounded in **`site-content.ts`** via **`BookingAssistantService`**.
 
 ---
 

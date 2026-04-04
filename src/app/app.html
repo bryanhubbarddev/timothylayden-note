@@ -2,6 +2,7 @@
 
 <app-floating-notes />
 <app-piano-bar />
+<app-booking-assistant />
 
 <div class="shell">
   <app-nav [stageName]="d.stageName" />
@@ -12,7 +13,7 @@
     <app-bio [data]="d" />
     <app-experience [experience]="d.experience" />
     <app-repertoire [repertoire]="d.repertoire" />
-    <app-gallery [gallery]="d.gallery" [videos]="d.videos" />
+    <app-gallery [gallery]="d.gallery" [videos]="d.videos" [photoAlbumLinks]="d.photoAlbumLinks" />
     <app-contact
       [bookingEmail]="d.bookingEmail"
       [bookingContact]="d.bookingContact"

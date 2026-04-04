@@ -57,6 +57,11 @@
   font-size: 0.93rem;
   margin-bottom: 22px;
 }
+.contact-desc--helper {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 0.88rem;
+}
 .avail-badge {
   display: inline-flex;
   align-items: center;

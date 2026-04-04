@@ -26,21 +26,53 @@
       }
     </div>
 
+    @if (photoAlbumLinks.length) {
+      <div class="gal-external-list" appRevealOnScroll>
+        @for (link of photoAlbumLinks; track link.url) {
+          <p class="gal-external-item">
+            <a
+              class="gal-external-album"
+              [href]="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ link.label }}
+              <span class="gal-external-icon" aria-hidden="true">↗</span>
+              <span class="gal-sr-only">(opens in new tab)</span>
+            </a>
+          </p>
+        }
+      </div>
+    }
+
     @if (videos.length) {
       <div class="videos-block" appRevealOnScroll>
         <p class="videos-eyebrow">Videos</p>
         <div class="video-grid">
-          @for (v of videos; track v.embedSrc) {
+          @for (v of videos; track videoTrackKey(v)) {
             <div class="video-card">
               <p class="video-title">{{ v.title }}</p>
               <div class="video-embed">
-                <iframe
-                  [title]="v.title"
-                  [src]="safeEmbed(v.embedSrc)"
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                ></iframe>
+                @if (v.fileSrc) {
+                  <video
+                    class="video-native"
+                    controls
+                    playsinline
+                    preload="metadata"
+                    [title]="v.title"
+                  >
+                    <source [src]="v.fileSrc" />
+                    Your browser does not support embedded video. Try the Google Photos links above.
+                  </video>
+                } @else if (v.embedSrc) {
+                  <iframe
+                    [title]="v.title"
+                    [src]="safeEmbed(v.embedSrc)"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
+                }
               </div>
             </div>
           }

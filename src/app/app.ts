@@ -12,6 +12,7 @@ import { RepertoireComponent } from './components/repertoire/repertoire.componen
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BookingAssistantComponent } from './components/booking-assistant/booking-assistant.component';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ import { FooterComponent } from './components/footer/footer.component';
     GalleryComponent,
     ContactComponent,
     FooterComponent,
+    BookingAssistantComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',

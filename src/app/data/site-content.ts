@@ -20,10 +20,22 @@ export interface SiteGalleryItem {
   caption: string;
 }
 
-/** YouTube/Vimeo embed URL, e.g. https://www.youtube.com/embed/VIDEO_ID */
+/**
+ * In-page video: use **fileSrc** (MP4/WebM under `assets/`) or **embedSrc** (YouTube/Vimeo iframe URL).
+ * Provide exactly one of `fileSrc` or `embedSrc` per item.
+ */
 export interface SiteVideo {
   title: string;
-  embedSrc: string;
+  /** YouTube/Vimeo embed URL, e.g. https://www.youtube.com/embed/VIDEO_ID */
+  embedSrc?: string;
+  /** Self-hosted file, e.g. assets/clip.mp4 — export from Google Photos/phone as MP4 for best browser support */
+  fileSrc?: string;
+}
+
+/** Outbound link to a full album (e.g. Google Photos) — opens in a new tab; not embedded. */
+export interface SiteExternalPhotoAlbum {
+  url: string;
+  label: string;
 }
 
 export interface SiteData {
@@ -42,6 +54,8 @@ export interface SiteData {
   repertoire: SiteRepertoireItem[];
   gallery: SiteGalleryItem[];
   videos: SiteVideo[];
+  /** Google Photos (or similar) albums — links below the grid. Empty [] = hidden. */
+  photoAlbumLinks: SiteExternalPhotoAlbum[];
 }
 
 export const siteContent: SiteData = {
@@ -50,7 +64,7 @@ export const siteContent: SiteData = {
     "With more than 36 years at the piano, Timothy Layden brings elegance, versatility, and warmth to restaurants, weddings, churches, cocktail hours, receptions, and special events.",
   heroImage: "assets/TimFront.png",
   heroImageAlt: "Timothy Layden — live piano performer",
-  bookingEmail: "Timothy.Layden@yahoo.com",
+  bookingEmail: "timothylayden.piano@gmail.com",
   bookingContact: "Timothy Layden",
   location: "Based in Florida • Available Statewide & Beyond",
   stats: [
@@ -66,12 +80,18 @@ export const siteContent: SiteData = {
     { icon: "♬", label: "Private parties & community events" },
     { icon: "𝄞", label: "Church services & ceremonies" },
     { icon: "𝄢", label: "Private cruises & yacht events" },
+    {
+      icon: "♩",
+      label: "Wesley Community Center — Corpus Christi Stars",
+      url: "https://www.wesleycommunitycenter.org",
+    },
   ],
   highlights: [
     "36+ years at the piano",
     "First public performance at age 8",
     "Five-year Saturday residency at Carmella's Italian Restaurant",
     "Performed at House of Rock & Omni Hotel ballrooms",
+    "Pianist for Dancing with the Corpus Christi Stars — Wesley Community Center gala benefiting Nueces County families",
   ],
   experience: [
     {
@@ -85,6 +105,12 @@ export const siteContent: SiteData = {
       title: "Major Venue Performances",
       detail:
         "Featured performances at House of Rock in Corpus Christi and Omni Hotel ballroom events — comfortably playing to rooms of hundreds.",
+    },
+    {
+      icon: "♩",
+      title: "Gala & Community Fundraisers",
+      detail:
+        "Performed for Dancing with the Corpus Christi Stars — a premier gala for the Wesley Community Center that pairs local leaders with professional dancers. The evening includes dinner, live performances, and voting for the Corpus Christi Stars Dancing winner, with proceeds supporting Nueces County programs for low-income families and homeless mothers.",
     },
     {
       icon: "𝄞",
@@ -143,6 +169,20 @@ export const siteContent: SiteData = {
       caption: "In the spotlight",
     },
   ],
-  /** Add { title, embedSrc } entries; embedSrc = YouTube embed URL. Empty = videos block hidden. */
-  videos: [],
+  /**
+   * In-page: embedSrc (YouTube/Vimeo) and/or fileSrc (MP4 in src/assets/).
+   * Extra photos/videos → photoAlbumLinks (opens Google Photos).
+   */
+  videos: [
+    {
+      title: "Dancing with the Corpus Christi Stars — live piano",
+      embedSrc: "https://www.youtube.com/embed/GZ-1Pp3OD9k",
+    },
+  ],
+  photoAlbumLinks: [
+    {
+      url: "https://photos.app.goo.gl/DWLnbDsvDTDsBAg97",
+      label: "Full photo & video archive — Google Photos",
+    },
+  ],
 };
