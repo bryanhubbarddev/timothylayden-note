@@ -29,7 +29,7 @@ Angular 19 single-page site for a live pianist: hero (with portrait), bio, exper
         │         │                 │                 │
         ▼         ▼                 ▼                 ▼
    Nav[stageName]  Hero[data]      Bio[data]       Experience[experience]
-   Footer[stageName]                Repertoire[repertoire]
+                                    Repertoire[repertoire]
                                     Gallery[gallery, videos]
                                     Contact[bookingEmail, bookingContact]
 ```
@@ -63,9 +63,9 @@ src/app/
 │   ├── repertoire/     # [repertoire]
 │   ├── gallery/        # [gallery] [videos] — lightbox, optional iframes
 │   ├── contact/        # [bookingEmail] [bookingContact] — mailto + subject
-│   ├── footer/         # [stageName]
 │   ├── floating-notes/ # decorative
-│   ├── piano-bar/      # decorative
+│   ├── footer/         # optional (not mounted in app shell)
+│   ├── piano-bar/      # optional (not mounted in app shell)
 │   └── booking-assistant/  # floating Gemini chat
 └── bio/                # [data] — full SiteData
 ```
@@ -113,31 +113,59 @@ Edit **`src/app/data/site-content.ts`** — the `siteContent` object and `SiteDa
 
 ---
 
-## Deploy (Firebase Hosting)
+## Environment setup
 
-```bash
-firebase login
-firebase use --add    # select project; aligns with .firebaserc
-npm run deploy        # production build + firebase deploy
-```
+Secrets and Firebase config are **not** committed. The app imports values from **`src/environments/secrets.generated.ts`**, which is produced by **`scripts/sync-env.cjs`**.
 
-Hosting output is configured in **`firebase.json`** (`public` → `dist/timothylayden-note/browser` after `ng build`).
+1. **`.env.example`** at the repo root lists the variable names (Firebase web config, optional Gemini). Copy it: **`cp .env.example .env`**.
+2. Fill **`.env`** with real values from [Firebase Console](https://console.firebase.google.com/) → Project settings → Your apps → Web app, and (for the booking chat) [Google AI Studio](https://aistudio.google.com/) for **`GEMINI_API_KEY`**.
+3. Run **`npm install`** or **`npm run env:sync`** so **`secrets.generated.ts`** is created. **`npm start`**, **`npm run build`**, **`npm run build:prod`**, and **`npm test`** all run **`env:sync`** first via npm lifecycle hooks.
+4. **`.gitignore`** excludes **`.env`** and **`src/environments/secrets.generated.ts`** so they are never committed.
 
-### Environment variables (`.env`)
+**CI/CD:** Export the same variable names in the job environment, or write a `.env` file in the runner before build; **`sync-env.cjs`** merges **`.env`** with **`process.env`**.
 
-**Firebase** and **Gemini** settings are loaded from a **repo-root `.env`** file (gitignored). On **`npm install`**, **`npm start`**, **`npm run build`**, and **`npm test`**, **`npm run env:sync`** runs first and generates **`src/environments/secrets.generated.ts`** (also gitignored).
-
-1. **`.env.example`** is committed with safe defaults (e.g. Firebase project id/domain). **`npm run env:sync`** loads it first, then merges **`.env`** on top (so secrets live only in **`.env`**).
-2. Copy **`.env.example`** → **`.env`** and fill in **API keys** and ids from [Firebase Console](https://console.firebase.google.com/) → Project settings → Your apps → Web, and [Google AI Studio](https://aistudio.google.com/) for Gemini.
-3. Run **`npm run env:sync`** if you change `.env` while the dev server is already running (or restart **`npm start`**).
-
-**CI/CD:** Before `ng build`, create `.env` from secrets (e.g. `printenv` / heredoc in the workflow) or export the same variable names into the environment; **`sync-env.cjs`** reads **`process.env`** after loading `.env`, so variables already set in the job are kept.
-
-**Privacy:** `.env` does not go to GitHub when ignored. Anything still **bundled into the browser** (Firebase web config, Gemini key) can be read by a determined visitor; restrict API keys in Google Cloud, and use a **backend proxy** for Gemini if you need the key to stay server-only.
+**Privacy:** Firebase web config and any Gemini key in the bundle can be inspected in the browser. Restrict keys in Google Cloud; use a server-side proxy for Gemini if the key must stay private.
 
 ### Booking helper (optional Gemini chat)
 
-The **Booking helper** uses **`GEMINI_API_KEY`** and optional **`GEMINI_MODEL`** from **`.env`**. If the key is empty, the UI still appears but prompts visitors to use **email** instead. Replies are grounded in **`site-content.ts`** via **`BookingAssistantService`**.
+The **Booking helper** reads **`GEMINI_API_KEY`** and optional **`GEMINI_MODEL`**. With an empty key, the UI still appears and directs visitors to email. Grounding uses **`site-content.ts`** via **`BookingAssistantService`**.
+
+---
+
+## Tests
+
+```bash
+npm test
+```
+
+Runs **`pretest`** → **`env:sync`**, then **`ng test`** (Karma + Jasmine). For CI, run **`npx ng test --watch=false --browsers=ChromeHeadless`** (or set the same in the **`test`** options in **`angular.json`**).
+
+---
+
+## Deploy (Firebase Hosting)
+
+Production deploy is **`npm run deploy`** (`build:prod` + **`firebase deploy`**). Equivalent manual steps:
+
+```bash
+npm run build:prod
+npx firebase login          # once per machine
+npx firebase use --add      # select project; aligns with .firebaserc
+npx firebase deploy         # or: npm run deploy (build + deploy)
+```
+
+Hosting **`public`** directory is set in **`firebase.json`** to **`dist/timothylayden-note/browser`** after Angular production build.
+
+### Custom domain
+
+1. In [Firebase Console](https://console.firebase.google.com/) → Hosting → **Add custom domain**, follow the wizard (DNS **A**/**TXT** records as shown).
+2. Wait for SSL provisioning (can take up to 24 hours).
+3. At your DNS provider, point the domain to Firebase’s records exactly as listed; avoid duplicate conflicting A/CNAME entries.
+
+---
+
+## Legacy note
+
+Older docs may reference **`src/environments/secrets.ts`**. The project uses **`secrets.generated.ts`** only; do not add a manual **`secrets.ts`** to the repo.
 
 ---
 

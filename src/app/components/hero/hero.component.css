@@ -78,7 +78,7 @@
 }
 .hero .eyebrow {
   display: block;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-display);
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   font-weight: 600;
   font-style: italic;
@@ -92,7 +92,7 @@
     0 0 40px rgba(184, 137, 46, 0.2);
 }
 .hero-h1 {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-display);
   font-weight: 300;
   font-size: clamp(3.4rem, 7.5vw, 7rem);
   line-height: 0.93;
@@ -111,7 +111,7 @@
   line-height: 1.85;
   max-width: 50ch;
   margin-bottom: 40px;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-display);
   letter-spacing: 0.02em;
 }
 .hero-sub-name {
@@ -232,7 +232,7 @@
 }
 .stat-box { text-align: center; }
 :host .stats-card .stat-num {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 600;
   color: #c9a227 !important;
@@ -289,9 +289,15 @@ a.focus-item { text-decoration: none; }
   align-items: center;
   gap: 8px;
   font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   color: #9a7a40;
+}
+.scroll-hint-mark {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.28em;
+  text-transform: none;
+  color: #b8892e;
 }
 .scroll-bar {
   width: 1px;

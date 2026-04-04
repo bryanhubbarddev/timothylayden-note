@@ -7,21 +7,21 @@
 }
 .note {
   position: absolute;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  color: var(--color-accent, #b8892e);
+  font-family: var(--font-display);
+  color: #e8dcc8;
   animation: floatNote 12s ease-in-out infinite;
   user-select: none;
   line-height: 1;
   font-weight: 300;
 }
-.n1 { top: 8%; left: 4%; font-size: 100px; opacity: 0.3; animation-delay: 0s; animation-duration: 14s; }
-.n2 { top: 28%; right: 5%; font-size: 76px; opacity: 0.26; animation-delay: 2s; animation-duration: 11s; }
-.n3 { top: 52%; left: 3%; font-size: 120px; opacity: 0.22; animation-delay: 5s; animation-duration: 16s; }
-.n4 { top: 15%; right: 13%; font-size: 84px; opacity: 0.28; animation-delay: 7s; animation-duration: 13s; }
-.n5 { top: 68%; right: 4%; font-size: 64px; opacity: 0.24; animation-delay: 9s; animation-duration: 10s; }
-.n6 { top: 40%; left: 46%; font-size: 108px; opacity: 0.16; animation-delay: 3s; animation-duration: 18s; }
-.n7 { top: 78%; left: 24%; font-size: 58px; opacity: 0.26; animation-delay: 6s; animation-duration: 12s; }
-.n8 { top: 5%; left: 60%; font-size: 70px; opacity: 0.22; animation-delay: 11s; animation-duration: 15s; }
+.n1 { top: 8%; left: 4%; font-size: 100px; opacity: 0.1; animation-delay: 0s; animation-duration: 14s; }
+.n2 { top: 28%; right: 5%; font-size: 76px; opacity: 0.1; animation-delay: 2s; animation-duration: 11s; }
+.n3 { top: 52%; left: 3%; font-size: 120px; opacity: 0.1; animation-delay: 5s; animation-duration: 16s; }
+.n4 { top: 15%; right: 13%; font-size: 84px; opacity: 0.1; animation-delay: 7s; animation-duration: 13s; }
+.n5 { top: 68%; right: 4%; font-size: 64px; opacity: 0.1; animation-delay: 9s; animation-duration: 10s; }
+.n6 { top: 40%; left: 46%; font-size: 108px; opacity: 0.1; animation-delay: 3s; animation-duration: 18s; }
+.n7 { top: 78%; left: 24%; font-size: 58px; opacity: 0.1; animation-delay: 6s; animation-duration: 12s; }
+.n8 { top: 5%; left: 60%; font-size: 70px; opacity: 0.1; animation-delay: 11s; animation-duration: 15s; }
 @keyframes floatNote {
   0% { transform: translateY(0) rotate(-4deg) scale(1); }
   30% { transform: translateY(-24px) rotate(3deg) scale(1.04); }

@@ -11,6 +11,17 @@
           <div class="exp-emoji">{{ e.icon }}</div>
           <h3>{{ e.title }}</h3>
           <p>{{ e.detail }}</p>
+          @if (e.linkUrl) {
+            <a
+              [href]="e.linkUrl"
+              class="exp-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ e.linkLabel || "Learn more" }}
+              <span aria-hidden="true"> ↗</span>
+            </a>
+          }
         </div>
       }
     </div>

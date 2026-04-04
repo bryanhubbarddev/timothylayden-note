@@ -1,4 +1,11 @@
 /* Global base — must live here so it applies to html/body (not in component CSS). */
+:root {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --color-text: #1a1208;
+  --color-accent: #b8892e;
+}
+
 *,
 *::before,
 *::after {
@@ -11,8 +18,8 @@ html,
 body {
   background: #f5efe6 !important;
   background-color: #f5efe6 !important;
-  color: #1a1208;
-  font-family: "DM Sans", system-ui, sans-serif;
+  color: var(--color-text);
+  font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
   scroll-behavior: smooth;

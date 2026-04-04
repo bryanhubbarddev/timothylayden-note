@@ -23,7 +23,7 @@ describe("ContactComponent", () => {
     fixture.componentRef.setInput("bookingEmail", "tim@example.com");
     expect(component.bookingMailto).toBe(
       "mailto:tim@example.com?subject=" +
-        encodeURIComponent("Booking inquiry — live piano"),
+        encodeURIComponent("Booking Request — live piano"),
     );
   });
 });

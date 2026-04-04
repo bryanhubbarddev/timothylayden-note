@@ -1,10 +1,10 @@
 .booking-assistant {
   position: fixed;
   right: max(16px, env(safe-area-inset-right));
-  bottom: calc(118px + env(safe-area-inset-bottom));
+  bottom: calc(24px + env(safe-area-inset-bottom));
   z-index: 40;
   pointer-events: none;
-  font-family: var(--font-body, "Source Sans 3", system-ui, sans-serif);
+  font-family: var(--font-body, "DM Sans", system-ui, sans-serif);
 }
 
 .booking-assistant--open {
@@ -73,7 +73,7 @@
 
 .booking-assistant__head h2 {
   margin: 0;
-  font-family: var(--font-display, "Cormorant Garamond", Georgia, serif);
+  font-family: var(--font-display);
   font-size: 1.25rem;
   font-weight: 600;
   color: #1a1208;

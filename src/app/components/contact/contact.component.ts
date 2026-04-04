@@ -15,7 +15,7 @@ export class ContactComponent {
   /** mailto: with subject so booking clicks open the user's email app addressed to Timothy. */
   get bookingMailto(): string {
     if (!this.bookingEmail.trim()) return '';
-    const subject = encodeURIComponent('Booking inquiry — live piano');
+    const subject = encodeURIComponent('Booking Request — live piano');
     return `mailto:${this.bookingEmail.trim()}?subject=${subject}`;
   }
 }

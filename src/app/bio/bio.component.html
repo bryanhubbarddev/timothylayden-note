@@ -14,10 +14,14 @@
         }
       </p>
     </div>
+    <div class="bio-vox" appRevealOnScroll role="region" aria-label="Experience highlights">
+      <p class="bio-vox-years">36+ Years Experience</p>
+      <p class="bio-vox-live" aria-label="Live piano">LIVE PIANO</p>
+      <a href="#contact" class="bio-vox-cta">Booking Request</a>
+    </div>
     <div class="bio-grid">
-      <div class="bio-text" appRevealOnScroll>
+      <div class="bio-text bio-text-box" appRevealOnScroll>
         <p>
-          With more than 36 years at the piano,
           <span class="bio-name">
           @for (part of displayNameParts; track $index) {
             @if (part.type === 'note') {

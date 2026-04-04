@@ -22,9 +22,6 @@ npm-debug.log*
 .env
 src/environments/secrets.generated.ts
 
-# Legacy manual secrets file (if present)
-src/environments/secrets.ts
-
 # Optional: uncomment to keep real Firebase config out of the repo
 # src/environments/environment.ts
 # src/environments/environment.production.ts

@@ -7,6 +7,9 @@ export interface SiteExperience {
   icon: string;
   title: string;
   detail: string;
+  /** Optional outbound link (e.g. venue activities page). */
+  linkUrl?: string;
+  linkLabel?: string;
 }
 
 export interface SiteRepertoireItem {
@@ -61,7 +64,7 @@ export interface SiteData {
 export const siteContent: SiteData = {
   stageName: "Timothy Layden",
   subheadline:
-    "With more than 36 years at the piano, Timothy Layden brings elegance, versatility, and warmth to restaurants, weddings, churches, cocktail hours, receptions, and special events.",
+    "Timothy Layden brings elegance, versatility, and a polished presence to restaurants, weddings, churches, cocktail hours, receptions, and special events — adjusting to the audience and shaping the atmosphere with care.",
   heroImage: "assets/TimFront.png",
   heroImageAlt: "Timothy Layden — live piano performer",
   bookingEmail: "timothylayden.piano@gmail.com",
@@ -74,6 +77,30 @@ export const siteContent: SiteData = {
     { value: "∞", label: "Requests Welcome" },
   ],
   focus: [
+    {
+      icon: "🍝",
+      label:
+        "Carmella's Lakeway — Italian in the heart of Lakeway (home to your favorite dishes)",
+      url: "https://carmellaslakeway.com",
+    },
+    {
+      icon: "🍝",
+      label:
+        "Carmella's Dripping Springs — Authentic Italian-American favorites & homemade pasta",
+      url: "https://carmelasdrippingsprings.com",
+    },
+    {
+      icon: "🏕️",
+      label:
+        "Open Air Spicewood (Texas) — Four years in the Texas Hill Country",
+      url: "https://openairrv.com/communities/spicewood",
+    },
+    {
+      icon: "🏖️",
+      label:
+        "Navarre Beach Camping Resort — Wednesday Live Piano in April listed on the resort activities page",
+      url: "https://navbeach.com/activities/",
+    },
     { icon: "♪", label: "Upscale restaurants & lounges" },
     { icon: "♫", label: "Wedding receptions & cocktail hour" },
     { icon: "♩", label: "Wine tastings & special events" },
@@ -117,6 +144,14 @@ export const siteContent: SiteData = {
       title: "Flexible Setup",
       detail:
         "Able to provide keyboard and sound when needed. A small, refined footprint that blends in so the focus stays on the music.",
+    },
+    {
+      icon: "🏖️",
+      title: "Navarre Beach Camping Resort",
+      detail:
+        "Wednesday live piano on the Florida Gulf Coast. Dates and details are published on the resort’s activities calendar.",
+      linkUrl: "https://navbeach.com/activities/",
+      linkLabel: "Resort activities calendar",
     },
     {
       icon: "𝄢",
@@ -171,7 +206,7 @@ export const siteContent: SiteData = {
   ],
   /**
    * In-page: embedSrc (YouTube/Vimeo) and/or fileSrc (MP4 in src/assets/).
-   * Extra photos/videos → photoAlbumLinks (opens Google Photos).
+   * Optional outbound albums: photoAlbumLinks (empty [] = hidden).
    */
   videos: [
     {
@@ -179,10 +214,5 @@ export const siteContent: SiteData = {
       embedSrc: "https://www.youtube.com/embed/GZ-1Pp3OD9k",
     },
   ],
-  photoAlbumLinks: [
-    {
-      url: "https://photos.app.goo.gl/DWLnbDsvDTDsBAg97",
-      label: "Full photo & video archive — Google Photos",
-    },
-  ],
+  photoAlbumLinks: [],
 };
