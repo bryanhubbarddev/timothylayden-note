@@ -20,7 +20,8 @@ export class PianoBarComponent {
     const w = this.designWidth;
     return {
       width: `${w}px`,
-      transform: `scaleX(calc(100vw / ${w}px))`,
+      /* calc() division must use a unitless number on the right; 100vw / 1200px is invalid. */
+      transform: `scaleX(calc(100vw / ${w}))`,
     };
   }
 }

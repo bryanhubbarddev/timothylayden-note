@@ -31,6 +31,9 @@ export class GalleryComponent {
   private sanitizer = inject(DomSanitizer);
   private injector = inject(Injector);
 
+  /** Dialog root — Tab trap scope (avoids adding @angular/cdk FocusTrap). */
+  @ViewChild('lightboxDialog') private lightboxDialog?: ElementRef<HTMLElement>;
+
   /** Close control inside the lightbox dialog (for focus management). */
   @ViewChild('lightboxCloseBtn') private lightboxCloseBtn?: ElementRef<HTMLButtonElement>;
 
@@ -100,5 +103,38 @@ export class GalleryComponent {
   @HostListener('document:keydown.escape')
   onEscape(): void {
     if (this.lightbox) this.closeLightbox();
+  }
+
+  /**
+   * While the lightbox is open, keep Tab / Shift+Tab inside the dialog so focus
+   * cannot move to the nav or rest of the page (WCAG modal pattern).
+   */
+  @HostListener('document:keydown', ['$event'])
+  onDocumentKeydown(e: KeyboardEvent): void {
+    if (!this.lightbox || e.key !== 'Tab') return;
+    const root = this.lightboxDialog?.nativeElement;
+    if (!root) return;
+    const list = this.focusableInside(root);
+    if (list.length === 0) return;
+    e.preventDefault();
+    const active = document.activeElement;
+    let idx = active instanceof HTMLElement ? list.indexOf(active) : -1;
+    if (idx < 0) idx = 0;
+    const next = e.shiftKey
+      ? (idx - 1 + list.length) % list.length
+      : (idx + 1) % list.length;
+    list[next].focus();
+  }
+
+  private focusableInside(container: HTMLElement): HTMLElement[] {
+    const sel =
+      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    return Array.from(container.querySelectorAll<HTMLElement>(sel)).filter(
+      (el) => !el.hasAttribute('disabled') && this.isVisibleEnough(el),
+    );
+  }
+
+  private isVisibleEnough(el: HTMLElement): boolean {
+    return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
   }
 }

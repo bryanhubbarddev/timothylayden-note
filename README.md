@@ -85,6 +85,8 @@ npm start            # prestart runs env:sync, then ng serve
 
 Use **`npm start`** / **`npm run build`** so **`env:sync`** runs first. Plain **`ng serve`** skips that unless you already ran **`npm run env:sync`**.
 
+When writing a **PR “How to test”** section, prefer **`npm start`** (or `npm run env:sync` then `ng serve`) so reviewers do not hit missing `secrets.generated.ts` on a fresh clone.
+
 ```bash
 ng build
 ng build --configuration production

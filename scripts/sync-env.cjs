@@ -1,7 +1,8 @@
 /**
  * Reads `.env` (repo root) and writes `src/environments/secrets.generated.ts`.
  * Existing `process.env` values are preserved (so CI can inject vars without a file).
- * Run: npm run env:sync  (also runs via prestart / prebuild / postinstall)
+ * Run: npm run env:sync  (also runs via prestart / prebuild / postinstall).
+ * `dotenv` is a production dependency so postinstall still works with npm ci --omit=dev.
  */
 const fs = require("fs");
 const path = require("path");
