@@ -52,13 +52,14 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
 .nav-book:hover{transform:translateY(-2px)!important;box-shadow:0 6px 20px rgba(184,137,46,0.4)!important}
 
 /* HERO */
-.hero{background-color:rgba(245,239,230,0.75);position:relative;min-height:100vh;display:flex;align-items:center;padding:110px clamp(16px,5vw,72px) 80px;overflow:hidden}
+.hero{background-color:rgba(245,239,230,0.75);position:relative;min-height:100vh;display:flex;align-items:flex-start;padding:clamp(128px,14vh,188px) clamp(16px,5vw,72px) 88px;overflow:hidden}
 .hero-glow{position:absolute;top:-10%;left:-5%;width:60%;height:70%;background:radial-gradient(ellipse,rgba(184,137,46,0.09),transparent 65%);pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:clamp(28px,5vw,64px);align-items:center;max-width:1200px;margin:0 auto;width:100%}
 .eyebrow{display:block;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.24em;color:#b8892e;margin-bottom:22px}
 .hero-h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(3.4rem,7.5vw,7rem);line-height:0.93;margin-bottom:28px;color:#1a1208}
 .hero-h1 .ig{display:block;color:#b8892e;font-style:italic}
-.hero-sub{font-size:clamp(0.95rem,1.3vw,1.1rem);color:#5a4a2a;line-height:1.85;max-width:50ch;margin-bottom:40px}
+.hero-sub-box{max-width:min(52ch,100%);margin-bottom:40px;padding:clamp(1.1rem,3vw,1.35rem) clamp(1.15rem,3.5vw,1.5rem);border-radius:14px;background:rgba(255,253,248,0.95);border:1.5px solid rgba(184,137,46,0.28);box-shadow:0 4px 20px rgba(100,80,40,0.06)}
+.hero-sub{margin:0;font-size:clamp(0.95rem,1.3vw,1.1rem);color:#5a4a2a;line-height:1.85;font-family:'Cormorant Garamond',Georgia,serif;letter-spacing:0.02em}
 .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:36px}
 .btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#b8892e,#d4a84b);color:#fff8ee;padding:15px 28px;border-radius:999px;font-weight:600;font-size:0.93rem;box-shadow:0 4px 16px rgba(184,137,46,0.3);transition:transform 0.2s,box-shadow 0.2s}
 .btn-gold:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(184,137,46,0.4)}
@@ -81,9 +82,6 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
 .focus-item{display:flex;align-items:center;gap:10px;font-size:0.84rem;color:#5a4a2a}
 
 /* SCROLL HINT */
-.scroll-hint{position:absolute;bottom:145px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.22em;color:#9a7a40}
-.scroll-bar{width:1px;height:44px;background:linear-gradient(to bottom,#b8892e,transparent);animation:drip 1.8s ease-in-out infinite}
-@keyframes drip{0%{transform:scaleY(0);transform-origin:top}49%{transform:scaleY(1);transform-origin:top}50%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* SECTIONS */
 .section{background-color:rgba(245,239,230,0.82);padding:clamp(56px,9vw,110px) clamp(16px,5vw,72px)}
@@ -130,9 +128,9 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
 .rep-footnote-link-wrap{margin:0.9rem 0 0}
 .rep-footnote-link{font-weight:600;color:#8a6a2a;text-decoration:underline;text-underline-offset:0.2em}
 .rep-footnote-standout{font-weight:600;color:#8a6a2a}
-.rep-apple-callout{max-width:40rem;margin:0 auto 1.5rem;padding:clamp(1rem,2.5vw,1.2rem) clamp(1.15rem,3vw,1.4rem);text-align:center;border-radius:14px;border:1px solid rgba(184,137,46,0.24);background:rgba(255,253,248,0.94);box-shadow:0 4px 20px rgba(100,80,40,0.06)}
-.rep-apple-badge{display:inline-block;font-size:0.62rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b8892e;margin-bottom:0.55rem;padding:0.35rem 0.65rem;border-radius:999px;border:1px solid rgba(184,137,46,0.35);background:rgba(184,137,46,0.08)}
-.rep-apple-text{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.98rem,2.1vw,1.12rem);line-height:1.65;color:#4a3824;font-style:italic;font-weight:500}
+.rep-release-callout{max-width:40rem;margin:0 auto 1.5rem;padding:clamp(1rem,2.5vw,1.2rem) clamp(1.15rem,3vw,1.4rem);text-align:center;border-radius:14px;border:1px solid rgba(184,137,46,0.24);background:rgba(255,253,248,0.94);box-shadow:0 4px 20px rgba(100,80,40,0.06)}
+.rep-release-badge{display:inline-block;font-size:0.62rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b8892e;margin-bottom:0.55rem;padding:0.35rem 0.65rem;border-radius:999px;border:1px solid rgba(184,137,46,0.35);background:rgba(184,137,46,0.08)}
+.rep-release-text{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.98rem,2.1vw,1.12rem);line-height:1.65;color:#4a3824;font-style:italic;font-weight:500}
 
 /* GALLERY */
 .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -227,7 +225,9 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
           <span class="ig">Unforgettable</span>
           <span>Experiences</span>
         </h1>
-        <p class="hero-sub hero-enter d3">With more than 36 years at the piano, Timmy Layden brings elegance, versatility, and heart to restaurants, weddings, churches, cocktail hours, receptions, and special events.</p>
+        <div class="hero-sub-box hero-enter d3">
+          <p class="hero-sub">With more than 36 years at the piano, Timmy Layden brings elegance, versatility, and heart to restaurants, weddings, churches, cocktail hours, receptions, and special events.</p>
+        </div>
         <div class="btn-row hero-enter d4">
           <a href="#contact" class="btn-gold"><span>Request Booking</span><span>&#8594;</span></a>
           <a href="#experience" class="btn-outline">View Experience</a>
@@ -246,16 +246,21 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
           </div>
           <p class="focus-title">Booking Focus</p>
           <div class="focus-items">
-            <div class="focus-item"><span>&#x1F942;</span><span>Upscale restaurants &amp; lounges</span></div>
-            <div class="focus-item"><span>&#x1F48D;</span><span>Wedding receptions &amp; cocktail hour</span></div>
-            <div class="focus-item"><span>&#x1F377;</span><span>Wine tastings &amp; special events</span></div>
-            <div class="focus-item"><span>&#x1F389;</span><span>Private parties &amp; community events</span></div>
-            <div class="focus-item"><span>&#x26EA;</span><span>Church services &amp; ceremonies</span></div>
+            <div class="focus-item"><span>&#9833;</span><span>Wesley Community Center &#8212; Corpus Christi Stars &#8212; Dance with the Stars, 3 years running</span></div>
+            <div class="focus-item"><span>&#9834;</span><span>Carmella&#8217;s Lakeway &#8212; Past venue; Italian in the heart of Lakeway</span></div>
+            <div class="focus-item"><span>&#9835;</span><span>Carmella&#8217;s Dripping Springs &#8212; Past venue; Italian-American favorites &amp; homemade pasta</span></div>
+            <div class="focus-item"><span>&#9833;</span><span>Open Air Spicewood (Texas) &#8212; Four-year Texas Hill Country residency (past)</span></div>
+            <div class="focus-item"><span>&#9836;</span><span>Navarre Beach Camping Resort &#8212; Upcoming live piano: see the resort activities calendar</span></div>
+            <div class="focus-item"><span>&#9834;</span><span>Upscale restaurants &amp; lounges</span></div>
+            <div class="focus-item"><span>&#9835;</span><span>Wedding receptions &amp; cocktail hour</span></div>
+            <div class="focus-item"><span>&#9833;</span><span>Wine tastings &amp; special events</span></div>
+            <div class="focus-item"><span>&#9836;</span><span>Private parties &amp; community events</span></div>
+            <div class="focus-item"><span>&#119070;</span><span>Church services &amp; ceremonies</span></div>
+            <div class="focus-item"><span>&#119074;</span><span>Private cruises &amp; yacht events</span></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="scroll-hint"><div class="scroll-bar"></div><span>Scroll</span></div>
   </section>
 
   <section class="section alt" id="about">
@@ -317,13 +322,13 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
         <div class="pill">&#x1F3BC; Classical</div>
         <div class="pill">&#x1F3B9; Request-Friendly</div>
       </div>
-      <aside class="rep-apple-callout reveal" aria-label="Apple Music — original recordings">
-        <span class="rep-apple-badge">Coming soon</span>
-        <p class="rep-apple-text">Original recordings are in preparation for publication and will be coming soon to Apple Music. Stay tuned for the official release.</p>
+      <aside class="rep-release-callout reveal" aria-label="Original recordings — coming soon">
+        <span class="rep-release-badge">Coming soon</span>
+        <p class="rep-release-text">Original recordings are in preparation for publication and will be available on streaming services soon. Stay tuned for the official release.</p>
       </aside>
       <div class="rep-footnote-wrap reveal">
         <div class="rep-footnote-box">
-          <p class="rep-footnote-lead">Music on demand &#8212; Apple Music</p>
+          <p class="rep-footnote-lead">Music on demand</p>
         </div>
       </div>
     </div>

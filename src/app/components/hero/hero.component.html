@@ -9,15 +9,17 @@
         <span class="ig">Unforgettable</span>
         <span>Experiences</span>
       </h1>
-      <p class="hero-sub hero-enter d3">{{ subheadlineParts.before }}<span class="hero-sub-name">
-        @for (part of displayNameParts; track $index) {
-          @if (part.type === 'note') {
-            <span class="hero-name-note">{{ part.symbol || '♪' }}</span>
-          } @else {
-            {{ part.value }}
+      <div class="hero-sub-box hero-enter d3">
+        <p class="hero-sub">{{ subheadlineParts.before }}<span class="hero-sub-name">
+          @for (part of displayNameParts; track $index) {
+            @if (part.type === 'note') {
+              <span class="hero-name-note">{{ part.symbol || '♪' }}</span>
+            } @else {
+              {{ part.value }}
+            }
           }
-        }
-      </span>{{ subheadlineParts.after }}</p>
+        </span>{{ subheadlineParts.after }}</p>
+      </div>
       <div class="btn-row hero-enter d4">
         <button type="button" (click)="scrollTo('contact')" class="btn-gold"><span>Booking Request</span><span>→</span></button>
         <button type="button" (click)="scrollTo('experience')" class="btn-outline">View Experience</button>
@@ -57,13 +59,4 @@
       </div>
     </div>
   </div>
-  <button
-    type="button"
-    class="scroll-hint scroll-hint--desktop"
-    (click)="scrollTo('experience')"
-    aria-label="Scroll to experience section"
-  >
-    <span class="scroll-bar" aria-hidden="true"></span>
-    <span class="scroll-hint-mark" aria-hidden="true">♪ ♫ ★</span>
-  </button>
 </section>

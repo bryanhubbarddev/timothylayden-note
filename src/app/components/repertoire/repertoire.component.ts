@@ -16,6 +16,6 @@ export class RepertoireComponent {
   @Input({ required: true }) repertoire!: SiteRepertoireItem[];
   @Input() repertoireFootnote?: string;
   @Input() repertoireFootnoteLead?: string;
-  @Input() repertoireAppleMusicNote?: string;
+  @Input() repertoireRecordingTeaser?: string;
   @Input() repertoireMusicLink?: SiteRepertoireMusicLink;
 }

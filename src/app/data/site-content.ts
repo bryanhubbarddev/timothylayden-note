@@ -67,10 +67,10 @@ export interface SiteData {
   repertoire: SiteRepertoireItem[];
   /** Optional body under repertoire pills (below optional lead). */
   repertoireFootnote?: string;
-  /** Optional title line in the footnote card (e.g. Music on demand — Apple Music). */
+  /** Optional title line in the footnote card (e.g. Music on demand). */
   repertoireFootnoteLead?: string;
-  /** Optional Apple Music / recordings teaser (shown between pills and footnote). */
-  repertoireAppleMusicNote?: string;
+  /** Optional recordings teaser (shown between pills and footnote). */
+  repertoireRecordingTeaser?: string;
   /** Optional teaser or outbound link when on-demand audio is available. */
   repertoireMusicLink?: SiteRepertoireMusicLink;
   gallery: SiteGalleryItem[];
@@ -97,25 +97,31 @@ export const siteContent: SiteData = {
   ],
   focus: [
     {
-      icon: "🍝",
+      icon: "♩",
+      label:
+        "Wesley Community Center — Corpus Christi Stars — Dance with the Stars, 3 years running",
+      url: "https://www.wesleycommunitycenter.org",
+    },
+    {
+      icon: "♪",
       label:
         "Carmella's Lakeway — Past venue; Italian in the heart of Lakeway",
       url: "https://www.carmelaslakeway.com/",
     },
     {
-      icon: "🍝",
+      icon: "♫",
       label:
         "Carmella's Dripping Springs — Past venue; Italian-American favorites & homemade pasta",
       url: "https://carmelasdrippingsprings.com",
     },
     {
-      icon: "🏕️",
+      icon: "♩",
       label:
         "Open Air Spicewood (Texas) — Four-year Texas Hill Country residency (past)",
       url: "https://openairrv.com/communities/spicewood",
     },
     {
-      icon: "🏖️",
+      icon: "♬",
       label:
         "Navarre Beach Camping Resort — Upcoming live piano: see the resort activities calendar",
       url: "https://navbeach.com/activities/",
@@ -126,11 +132,6 @@ export const siteContent: SiteData = {
     { icon: "♬", label: "Private parties & community events" },
     { icon: "𝄞", label: "Church services & ceremonies" },
     { icon: "𝄢", label: "Private cruises & yacht events" },
-    {
-      icon: "♩",
-      label: "Wesley Community Center — Corpus Christi Stars",
-      url: "https://www.wesleycommunitycenter.org",
-    },
   ],
   highlights: [
     "36+ years at the piano",
@@ -186,9 +187,9 @@ export const siteContent: SiteData = {
     { icon: "♬", name: "Classical" },
     { icon: "𝄞", name: "Request-Friendly" },
   ],
-  repertoireFootnoteLead: "Music on demand — Apple Music",
-  repertoireAppleMusicNote:
-    "Original recordings are in preparation for publication and will be coming soon to Apple Music. Stay tuned for the official release.",
+  repertoireFootnoteLead: "Music on demand",
+  repertoireRecordingTeaser:
+    "Original recordings are in preparation for publication and will be available on streaming services soon. Stay tuned for the official release.",
   gallery: [
     {
       src: "assets/TimPiano.png",

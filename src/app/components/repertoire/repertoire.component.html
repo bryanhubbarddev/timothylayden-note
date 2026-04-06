@@ -10,14 +10,14 @@
         <div class="pill">{{ r.icon }} {{ r.name }}</div>
       }
     </div>
-    @if (repertoireAppleMusicNote) {
+    @if (repertoireRecordingTeaser) {
       <aside
-        class="rep-apple-callout"
+        class="rep-release-callout"
         appRevealOnScroll
-        aria-label="Apple Music — original recordings"
+        aria-label="Original recordings — coming soon"
       >
-        <span class="rep-apple-badge">Coming soon</span>
-        <p class="rep-apple-text">{{ repertoireAppleMusicNote }}</p>
+        <span class="rep-release-badge">Coming soon</span>
+        <p class="rep-release-text">{{ repertoireRecordingTeaser }}</p>
       </aside>
     }
     @if (
