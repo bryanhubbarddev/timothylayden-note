@@ -126,6 +126,9 @@
   margin-bottom: 24px;
   text-decoration: none;
 }
+.contact-email-link--alt {
+  margin-top: -10px;
+}
 .contact-email-link:hover {
   color: #8a6020;
 }

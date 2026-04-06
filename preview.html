@@ -122,7 +122,11 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
 .rep-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:28px}
 .pill{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:999px;border:1.5px solid rgba(184,137,46,0.28);background:rgba(184,137,46,0.07);color:#7a5020;font-size:0.89rem;font-weight:500;transition:background 0.2s,transform 0.2s}
 .pill:hover{background:rgba(184,137,46,0.16);transform:scale(1.04)}
-.rep-footnote{text-align:center;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.05rem;color:#7a6040}
+.rep-footnote-wrap{max-width:40rem;margin:0 auto;text-align:center}
+.rep-footnote-box{margin:0;padding:clamp(1.1rem,3vw,1.35rem) clamp(1.15rem,3.5vw,1.5rem);border-radius:12px;background:rgba(255,253,248,0.95);border:1.5px solid rgba(184,137,46,0.28);box-shadow:0 4px 20px rgba(100,80,40,0.06);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:clamp(1.05rem,2.4vw,1.18rem);line-height:1.65;color:#4a3824;text-align:center}
+.rep-footnote-link-wrap{margin:0.9rem 0 0}
+.rep-footnote-link{font-weight:600;color:#8a6a2a;text-decoration:underline;text-underline-offset:0.2em}
+.rep-listen-note{text-align:center;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:clamp(0.98rem,2.1vw,1.08rem);line-height:1.6;color:#5c4a38;max-width:36rem;margin:1.25rem auto 0;padding:1rem 1.25rem;border-radius:12px;background:rgba(184,137,46,0.09);border:1px solid rgba(184,137,46,0.2)}
 
 /* GALLERY */
 .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -232,7 +236,6 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
           <div class="stats-4">
             <div class="stat-box"><p class="stat-num">36+</p><p class="stat-lbl">Years at the Piano</p></div>
             <div class="stat-box"><p class="stat-num">8</p><p class="stat-lbl">Age of First Perf.</p></div>
-            <div class="stat-box"><p class="stat-num">5</p><p class="stat-lbl">Year Residency</p></div>
             <div class="stat-box"><p class="stat-num">&#x221E;</p><p class="stat-lbl">Requests Welcome</p></div>
           </div>
           <p class="focus-title">Booking Focus</p>
@@ -308,7 +311,11 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
         <div class="pill">&#x1F3BC; Classical</div>
         <div class="pill">&#x1F3B9; Request-Friendly</div>
       </div>
-      <p class="rep-footnote reveal">Request-friendly sets &#8212; Timmy reads the room and keeps the vibe flowing.</p>
+      <div class="rep-footnote-wrap reveal">
+        <p class="rep-footnote-box">Timothy takes song requests when it fits the event. He pays attention to the room and adjusts the music so guests feel comfortable and the mood stays relaxed.</p>
+        <p class="rep-footnote-link-wrap"><a class="rep-footnote-link" href="#listen">Listen-at-home music &#8212; coming soon</a></p>
+      </div>
+      <p id="listen" class="rep-listen-note reveal" tabindex="-1">Recorded music you can enjoy at home is not on the site yet. It will be added here when it is ready.</p>
     </div>
   </section>
 
@@ -343,9 +350,9 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
           <div class="contact-card">
             <p class="card-label">Direct Booking Contact</p>
             <h3 class="contact-name">Timothy Layden</h3>
-            <a href="mailto:timothylayden.piano@gmail.com" class="contact-email-link"><span>&#x2709;</span> timothylayden.piano@gmail.com</a>
+            <a href="mailto:timothy.layden@yahoo.com" class="contact-email-link"><span>&#x2709;</span> timothy.layden@yahoo.com</a>
             <div class="divider"></div>
-            <a href="mailto:timothylayden.piano@gmail.com" class="btn-full"><span>Send a Message</span><span>&#8594;</span></a>
+            <a href="mailto:timothy.layden@yahoo.com" class="btn-full"><span>Send a Message</span><span>&#8594;</span></a>
           </div>
         </div>
       </div>

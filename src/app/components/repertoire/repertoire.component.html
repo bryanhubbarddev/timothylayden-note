@@ -10,6 +10,23 @@
         <div class="pill">{{ r.icon }} {{ r.name }}</div>
       }
     </div>
-    <p class="rep-footnote" appRevealOnScroll>Request-friendly sets — Timothy reads the room and keeps the vibe flowing.</p>
+    <div class="rep-footnote-wrap" appRevealOnScroll>
+      <p class="rep-footnote-box">{{ repertoireFootnote }}</p>
+      @if (repertoireMusicLink; as ml) {
+        <p class="rep-footnote-link-wrap">
+          <a class="rep-footnote-link" [href]="ml.href">{{ ml.label }}</a>
+        </p>
+      }
+    </div>
+    @if (musicAnchorId) {
+      <p
+        class="rep-listen-note"
+        [attr.id]="musicAnchorId"
+        tabindex="-1"
+        appRevealOnScroll
+      >
+        {{ repertoireListenBlurb }}
+      </p>
+    }
   </div>
 </section>

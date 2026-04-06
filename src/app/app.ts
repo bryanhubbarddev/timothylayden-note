@@ -10,7 +10,6 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { RepertoireComponent } from './components/repertoire/repertoire.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { BookingAssistantComponent } from './components/booking-assistant/booking-assistant.component';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +24,6 @@ import { BookingAssistantComponent } from './components/booking-assistant/bookin
     RepertoireComponent,
     GalleryComponent,
     ContactComponent,
-    BookingAssistantComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',

@@ -10,12 +10,22 @@ import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.direc
 })
 export class ContactComponent {
   @Input() bookingEmail = '';
+  @Input() bookingEmailAlt?: string;
   @Input() bookingContact = '';
 
   /** mailto: with subject so booking clicks open the user's email app addressed to Timothy. */
-  get bookingMailto(): string {
-    if (!this.bookingEmail.trim()) return '';
+  private buildMailto(to: string): string {
+    const email = to.trim();
+    if (!email) return '';
     const subject = encodeURIComponent('Booking Request — live piano');
-    return `mailto:${this.bookingEmail.trim()}?subject=${subject}`;
+    return `mailto:${email}?subject=${subject}`;
+  }
+
+  get bookingMailto(): string {
+    return this.buildMailto(this.bookingEmail);
+  }
+
+  get bookingMailtoAlt(): string {
+    return this.buildMailto(this.bookingEmailAlt || '');
   }
 }

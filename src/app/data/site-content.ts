@@ -17,6 +17,12 @@ export interface SiteRepertoireItem {
   name: string;
 }
 
+/** Link from repertoire footnote (e.g. #listen on this page, or a streaming URL when ready). */
+export interface SiteRepertoireMusicLink {
+  href: string;
+  label: string;
+}
+
 export interface SiteGalleryItem {
   src: string;
   alt: string;
@@ -48,6 +54,8 @@ export interface SiteData {
   heroImage: string;
   heroImageAlt: string;
   bookingEmail: string;
+  /** Optional secondary booking email (e.g. alternate inbox). */
+  bookingEmailAlt?: string;
   bookingContact: string;
   location: string;
   stats: SiteStat[];
@@ -55,6 +63,12 @@ export interface SiteData {
   highlights: string[];
   experience: SiteExperience[];
   repertoire: SiteRepertoireItem[];
+  /** Short note under repertoire pills; plain language for clarity. */
+  repertoireFootnote: string;
+  /** Optional link (e.g. #listen or Spotify when available). */
+  repertoireMusicLink?: SiteRepertoireMusicLink;
+  /** Shown at in-page #anchor when repertoireMusicLink uses a same-page hash. */
+  repertoireListenBlurb?: string;
   gallery: SiteGalleryItem[];
   videos: SiteVideo[];
   /** Google Photos (or similar) albums — links below the grid. Empty [] = hidden. */
@@ -67,38 +81,37 @@ export const siteContent: SiteData = {
     "Timothy Layden brings elegance, versatility, and a polished presence to restaurants, weddings, churches, cocktail hours, receptions, and special events — adjusting to the audience and shaping the atmosphere with care.",
   heroImage: "assets/TimFront.png",
   heroImageAlt: "Timothy Layden — live piano performer",
-  bookingEmail: "timothylayden.piano@gmail.com",
+  bookingEmail: "timothy.layden@yahoo.com",
   bookingContact: "Timothy Layden",
   location: "Based in Florida • Available Statewide & Beyond",
   stats: [
     { value: "36+", label: "Years at the Piano" },
     { value: "8", label: "Age of First Perf." },
-    { value: "5", label: "Year Residency" },
     { value: "∞", label: "Requests Welcome" },
   ],
   focus: [
     {
       icon: "🍝",
       label:
-        "Carmella's Lakeway — Italian in the heart of Lakeway (home to your favorite dishes)",
+        "Carmella's Lakeway — Past venue; Italian in the heart of Lakeway",
       url: "https://carmellaslakeway.com",
     },
     {
       icon: "🍝",
       label:
-        "Carmella's Dripping Springs — Authentic Italian-American favorites & homemade pasta",
+        "Carmella's Dripping Springs — Past venue; Italian-American favorites & homemade pasta",
       url: "https://carmelasdrippingsprings.com",
     },
     {
       icon: "🏕️",
       label:
-        "Open Air Spicewood (Texas) — Four years in the Texas Hill Country",
+        "Open Air Spicewood (Texas) — Four-year Texas Hill Country residency (past)",
       url: "https://openairrv.com/communities/spicewood",
     },
     {
       icon: "🏖️",
       label:
-        "Navarre Beach Camping Resort — Wednesday Live Piano in April listed on the resort activities page",
+        "Navarre Beach Camping Resort — Upcoming live piano: see the resort activities calendar",
       url: "https://navbeach.com/activities/",
     },
     { icon: "♪", label: "Upscale restaurants & lounges" },
@@ -149,7 +162,7 @@ export const siteContent: SiteData = {
       icon: "🏖️",
       title: "Navarre Beach Camping Resort",
       detail:
-        "Wednesday live piano on the Florida Gulf Coast. Dates and details are published on the resort’s activities calendar.",
+        "Live piano on the Florida Gulf Coast. Dates and details are published on the resort’s activities calendar.",
       linkUrl: "https://navbeach.com/activities/",
       linkLabel: "Resort activities calendar",
     },
@@ -167,6 +180,14 @@ export const siteContent: SiteData = {
     { icon: "♬", name: "Classical" },
     { icon: "𝄞", name: "Request-Friendly" },
   ],
+  repertoireFootnote:
+    "Timothy takes song requests when it fits the event. He pays attention to the room and adjusts the music so guests feel comfortable and the mood stays relaxed.",
+  repertoireMusicLink: {
+    href: "#listen",
+    label: "Listen-at-home music — coming soon",
+  },
+  repertoireListenBlurb:
+    "Recorded music you can enjoy at home is not on the site yet. It will be added here when it is ready.",
   gallery: [
     {
       src: "assets/TimPiano.png",
@@ -175,8 +196,8 @@ export const siteContent: SiteData = {
     },
     {
       src: "assets/TimSmile.png",
-      alt: "Timothy Layden smiling",
-      caption: "Live performance",
+      alt: "Timothy Layden plays a live performance",
+      caption: "Timothy Plays Live Performance",
     },
     {
       src: "assets/TimNavarre.png",
