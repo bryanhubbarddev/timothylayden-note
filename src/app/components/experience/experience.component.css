@@ -14,7 +14,7 @@
   margin-bottom: clamp(40px, 6vw, 70px);
 }
 .section-head h2 {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-display);
   font-weight: 300;
   font-size: clamp(1.9rem, 3.8vw, 3.2rem);
   color: var(--color-text, #1a1208);
@@ -72,7 +72,7 @@
   margin-bottom: 14px;
 }
 .exp-card h3 {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.2rem;
   color: var(--color-text, #1a1208);
@@ -82,6 +82,31 @@
   font-size: 0.87rem;
   color: #5a4a2a;
   line-height: 1.75;
+}
+.exp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #8a6220;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184, 137, 46, 0.45);
+  padding-bottom: 1px;
+  width: fit-content;
+  transition: color 0.2s, border-color 0.2s;
+}
+.exp-link:hover,
+.exp-link:focus-visible {
+  color: #6a4a18;
+  border-bottom-color: #b8892e;
+  outline: none;
+}
+.exp-link:focus-visible {
+  box-shadow: 0 0 0 3px rgba(184, 137, 46, 0.35);
+  border-radius: 4px;
 }
 @media (max-width: 1024px) {
   .exp-grid {

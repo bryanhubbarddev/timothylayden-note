@@ -19,14 +19,17 @@
         }
       </span>{{ subheadlineParts.after }}</p>
       <div class="btn-row hero-enter d4">
-        <button type="button" (click)="scrollTo('contact')" class="btn-gold"><span>Request Booking</span><span>→</span></button>
+        <button type="button" (click)="scrollTo('contact')" class="btn-gold"><span>Booking Request</span><span>→</span></button>
         <button type="button" (click)="scrollTo('experience')" class="btn-outline">View Experience</button>
       </div>
       <div class="loc-row hero-enter d5">
         <span class="loc-dot"></span>{{ data.location }}
       </div>
     </div>
-    <div class="hero-enter d3">
+    <div class="hero-visual hero-enter d3">
+      <figure class="hero-photo">
+        <img [src]="data.heroImage" [alt]="data.heroImageAlt" width="640" height="800" loading="eager" fetchpriority="high" />
+      </figure>
       <div class="stats-card">
         <p class="card-label">Career at a glance</p>
         <div class="stats-4">
@@ -54,8 +57,8 @@
       </div>
     </div>
   </div>
-  <div class="scroll-hint">
-    <div class="scroll-bar"></div>
-    <span>Scroll</span>
+  <div class="scroll-hint" aria-label="Scroll to continue">
+    <div class="scroll-bar" aria-hidden="true"></div>
+    <span class="scroll-hint-mark" aria-hidden="true">♪ ♫ ★</span>
   </div>
 </section>

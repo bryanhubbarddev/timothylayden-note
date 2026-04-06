@@ -1,3 +1,4 @@
+<div class="gallery-root">
 <section class="section" id="gallery" aria-labelledby="gal-heading">
   <div class="section-wrap">
     <div class="section-head" appRevealOnScroll>
@@ -6,15 +7,106 @@
       <div class="rule"><div class="rule-line"></div><span class="rule-note">♪</span><div class="rule-line rev"></div></div>
     </div>
     <div class="gal-grid">
-      @for (img of gallery; track img.alt) {
+      @for (img of gallery; track img.src) {
         <figure class="gal-card" appRevealOnScroll>
-          <div class="gal-img">
-            <span class="gal-icon" aria-hidden="true">𝄞</span>
-            <img [src]="img.src" [alt]="img.alt" loading="lazy">
-            <div class="gal-overlay"><p class="gal-caption">{{ img.caption }}</p></div>
-          </div>
+          <button
+            type="button"
+            class="gal-trigger"
+            (click)="openLightbox(img)"
+            [attr.aria-label]="'View larger: ' + img.alt"
+          >
+            <div class="gal-img">
+              <span class="gal-icon" aria-hidden="true">𝄞</span>
+              <img [src]="img.src" [alt]="img.alt" loading="lazy">
+              <div class="gal-overlay"><p class="gal-caption">{{ img.caption }}</p></div>
+            </div>
+          </button>
+          <figcaption class="gal-caption-mobile">{{ img.caption }}</figcaption>
         </figure>
       }
     </div>
+
+    @if (photoAlbumLinks.length) {
+      <div class="gal-external-list" appRevealOnScroll>
+        @for (link of photoAlbumLinks; track link.url) {
+          <p class="gal-external-item">
+            <a
+              class="gal-external-album"
+              [href]="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ link.label }}
+              <span class="gal-external-icon" aria-hidden="true">↗</span>
+              <span class="gal-sr-only">(opens in new tab)</span>
+            </a>
+          </p>
+        }
+      </div>
+    }
+
+    @if (videos.length) {
+      <div class="videos-block" appRevealOnScroll>
+        <p class="videos-eyebrow">Videos</p>
+        <div class="video-grid">
+          @for (v of videos; track videoTrackKey(v)) {
+            <div class="video-card">
+              <p class="video-title">{{ v.title }}</p>
+              <div class="video-embed">
+                @if (v.fileSrc) {
+                  <video
+                    class="video-native"
+                    controls
+                    playsinline
+                    preload="metadata"
+                    [title]="v.title"
+                  >
+                    <source [src]="v.fileSrc" />
+                    Your browser does not support embedded video.
+                  </video>
+                } @else if (v.embedSrc) {
+                  <iframe
+                    [title]="v.title"
+                    [src]="safeEmbed(v.embedSrc)"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
   </div>
 </section>
+
+@if (lightbox) {
+  <div
+    class="lightbox-backdrop"
+    (click)="closeLightbox()"
+    role="presentation"
+    aria-hidden="true"
+  ></div>
+  <div
+    #lightboxDialog
+    class="lightbox-dialog"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="lightbox.alt"
+  >
+    <button
+      #lightboxCloseBtn
+      type="button"
+      class="lightbox-close"
+      (click)="closeLightbox()"
+      aria-label="Close image"
+    >
+      ×
+    </button>
+    <img class="lightbox-img" [src]="lightbox.src" [alt]="lightbox.alt" />
+    <p class="lightbox-caption">{{ lightbox.caption }}</p>
+  </div>
+}
+</div>

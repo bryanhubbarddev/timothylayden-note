@@ -1,7 +1,6 @@
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <app-floating-notes />
-<app-piano-bar />
 
 <div class="shell">
   <app-nav [stageName]="d.stageName" />
@@ -11,13 +10,16 @@
   <main id="main-content">
     <app-bio [data]="d" />
     <app-experience [experience]="d.experience" />
-    <app-repertoire [repertoire]="d.repertoire" />
-    <app-gallery [gallery]="d.gallery" />
+    <app-repertoire
+      [repertoire]="d.repertoire"
+      [repertoireFootnote]="d.repertoireFootnote"
+      [repertoireMusicLink]="d.repertoireMusicLink"
+      [repertoireListenBlurb]="d.repertoireListenBlurb"
+    />
+    <app-gallery [gallery]="d.gallery" [videos]="d.videos" [photoAlbumLinks]="d.photoAlbumLinks" />
     <app-contact
       [bookingEmail]="d.bookingEmail"
       [bookingContact]="d.bookingContact"
     />
   </main>
 </div>
-
-<app-footer [stageName]="d.stageName" />

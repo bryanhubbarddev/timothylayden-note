@@ -40,13 +40,11 @@
   bottom: 12px;
   height: 92px;
   z-index: 5;
-  display: flex;
   width: 100%;
 }
-.keys-segment {
-  flex: 1;
-  min-width: 0;
+.keys-row-clip {
   position: relative;
+  width: 100%;
   height: 92px;
   overflow: hidden;
 }
@@ -54,39 +52,85 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 360px;
   height: 92px;
-  transform: scaleX(calc((100vw / 3) / 360));
   transform-origin: left bottom;
 }
 .wk {
   position: absolute;
-  width: 36px;
+  width: 12px;
   height: 92px;
   background: linear-gradient(to bottom, #fdfaf5 0%, #ede8df 100%);
   border: 1px solid #c0b49a;
   border-top: 2px solid #ddd5c0;
-  border-radius: 0 0 6px 6px;
-  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.07), 2px 5px 10px rgba(0, 0, 0, 0.12);
+  border-radius: 0 0 3px 3px;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.07), 1px 3px 6px rgba(0, 0, 0, 0.1);
   z-index: 1;
+  box-sizing: border-box;
 }
 .bk {
   position: absolute;
-  width: 23px;
+  width: 7px;
   height: 57px;
   background: linear-gradient(170deg, #2e2416 0%, #18110c 55%, #2e2416 100%);
   border: 1px solid #0a0806;
-  border-radius: 0 0 5px 5px;
-  box-shadow: inset 0 -2px 4px rgba(255, 255, 255, 0.06), 2px 7px 12px rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 3px 3px;
+  box-shadow: inset 0 -2px 3px rgba(255, 255, 255, 0.06), 1px 4px 8px rgba(0, 0, 0, 0.45);
   z-index: 2;
+  box-sizing: border-box;
 }
 .bk::after {
   content: "";
   position: absolute;
-  top: 5px;
-  left: 3px;
-  right: 3px;
-  height: 16px;
+  top: 4px;
+  left: 1px;
+  right: 1px;
+  height: 12px;
   background: linear-gradient(to bottom, rgba(201, 168, 76, 0.18), transparent);
-  border-radius: 2px;
+  border-radius: 1px;
+}
+
+@keyframes wkDip {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow:
+      inset 0 -2px 4px rgba(0, 0, 0, 0.07),
+      1px 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: translateY(2px);
+    box-shadow:
+      inset 0 -1px 3px rgba(0, 0, 0, 0.09),
+      1px 2px 5px rgba(0, 0, 0, 0.14);
+  }
+}
+
+@keyframes bkGlow {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 -2px 3px rgba(255, 255, 255, 0.06),
+      1px 4px 8px rgba(0, 0, 0, 0.45);
+  }
+  50% {
+    box-shadow:
+      inset 0 -2px 3px rgba(255, 255, 255, 0.1),
+      1px 4px 8px rgba(0, 0, 0, 0.5),
+      0 0 8px rgba(184, 137, 46, 0.28);
+  }
+}
+
+.wk--dip {
+  animation: wkDip 2.8s ease-in-out infinite;
+}
+
+.bk--glow {
+  animation: bkGlow 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wk--dip,
+  .bk--glow {
+    animation: none;
+  }
 }

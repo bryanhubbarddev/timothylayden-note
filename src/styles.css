@@ -1,7 +1,35 @@
-html, body {
-  background: #080808 !important;
-  background-color: #080808 !important;
+/* Global base — must live here so it applies to html/body (not in component CSS). */
+:root {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --color-text: #1a1208;
+  --color-accent: #b8892e;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html,
+body {
+  background: #f5efe6 !important;
+  background-color: #f5efe6 !important;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
   overflow-x: hidden;
+  /* Respect “reduce motion”: smooth anchor scrolling can cause discomfort. */
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html,
+  body {
+    scroll-behavior: smooth;
+  }
 }

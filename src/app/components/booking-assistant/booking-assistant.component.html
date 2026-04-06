@@ -1,0 +1,107 @@
+<div class="booking-assistant" [class.booking-assistant--open]="open">
+  <button
+    type="button"
+    class="booking-assistant__fab"
+    (click)="toggle()"
+    [attr.aria-expanded]="open"
+    [attr.aria-controls]="open ? 'booking-assistant-panel' : null"
+    id="booking-assistant-trigger"
+  >
+    <span class="booking-assistant__fab-icon" aria-hidden="true">💬</span>
+    <span class="booking-assistant__fab-label">Booking helper</span>
+  </button>
+
+  @if (open) {
+  <div
+    class="booking-assistant__sheet"
+    id="booking-assistant-panel"
+    role="dialog"
+    aria-labelledby="booking-assistant-title"
+    aria-modal="true"
+  >
+    <div class="booking-assistant__head">
+      <h2 id="booking-assistant-title">Booking helper</h2>
+      <div class="booking-assistant__actions">
+        <button type="button" class="booking-assistant__ghost" (click)="newChat()">
+          New chat
+        </button>
+        <button
+          type="button"
+          class="booking-assistant__ghost"
+          (click)="close()"
+          aria-label="Close booking helper"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    @if (!configured) {
+      <p class="booking-assistant__notice">
+        The assistant is not connected yet. Email
+        <a [href]="'mailto:' + bookingEmail">{{ bookingEmail }}</a>
+        for booking questions.
+      </p>
+      @if (showDevHint()) {
+        <p class="booking-assistant__devhint">
+          Dev: add <code>GEMINI_API_KEY</code> to repo-root <code>.env</code> (copy from
+          <code>.env.example</code>), then <code>npm run env:sync</code> or restart
+          <code>npm start</code>. Use HTTP referrer restrictions on the key when possible.
+        </p>
+      }
+    }
+
+    @if (configured) {
+      <p class="booking-assistant__privacy">
+        Replies are generated with Google Gemini. Do not send passwords or sensitive data.
+      </p>
+    }
+
+    <div class="booking-assistant__messages" #panel tabindex="-1">
+      @if (history.length === 0 && configured) {
+        <p class="booking-assistant__empty">
+          Ask about event types, repertoire, or how to book — or paste a client email for reply ideas.
+        </p>
+      }
+      @for (turn of history; track $index) {
+        <div
+          class="booking-assistant__bubble"
+          [class.booking-assistant__bubble--user]="turn.role === 'user'"
+          [class.booking-assistant__bubble--model]="turn.role === 'model'"
+        >
+          {{ turn.text }}
+        </div>
+      }
+      @if (loading) {
+        <p class="booking-assistant__typing" aria-live="polite">Thinking…</p>
+      }
+    </div>
+
+    @if (error) {
+      <p class="booking-assistant__error" role="alert">{{ error }}</p>
+    }
+
+    <div class="booking-assistant__compose">
+      <label class="visually-hidden" for="booking-assistant-input">Your message</label>
+      <textarea
+        id="booking-assistant-input"
+        #inputField
+        rows="2"
+        [(ngModel)]="draft"
+        [disabled]="loading || !configured"
+        placeholder="Type a question…"
+        (keydown.control.enter)="send()"
+        (keydown.meta.enter)="send()"
+      ></textarea>
+      <button
+        type="button"
+        class="booking-assistant__send"
+        (click)="send()"
+        [disabled]="loading || !draft.trim() || !configured"
+      >
+        Send
+      </button>
+    </div>
+  </div>
+  }
+</div>

@@ -36,7 +36,7 @@
   box-shadow: 0 2px 12px rgba(184, 137, 46, 0.3);
 }
 .brand-initials {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
@@ -52,7 +52,7 @@
 }
 .brand-name-text {
   display: block;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--color-text, #1a1208);

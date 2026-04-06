@@ -18,6 +18,10 @@ npm-debug.log*
 *.swp
 *.swo
 
+# Local secrets (never commit)
+.env
+src/environments/secrets.generated.ts
+
 # Optional: uncomment to keep real Firebase config out of the repo
 # src/environments/environment.ts
 # src/environments/environment.production.ts

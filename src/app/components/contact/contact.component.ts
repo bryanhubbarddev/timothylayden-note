@@ -10,5 +10,31 @@ import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.direc
 })
 export class ContactComponent {
   @Input() bookingEmail = '';
+  @Input() bookingEmailAlt?: string;
   @Input() bookingContact = '';
+
+  /** mailto: with subject so booking clicks open the user's email app addressed to Timothy. */
+  private buildMailto(to: string): string {
+    const email = to.trim();
+    if (!email) return '';
+    const subject = encodeURIComponent('Booking Request — live piano');
+    return `mailto:${email}?subject=${subject}`;
+  }
+
+  get bookingMailto(): string {
+    return this.buildMailto(this.bookingEmail);
+  }
+
+  get bookingMailtoAlt(): string {
+    return this.buildMailto(this.bookingEmailAlt || '');
+  }
+
+  /**
+   * First usable mailto URL for the main CTA. Empty `href` on `<a>` would
+   * navigate to the current page when clicked, so the template only renders
+   * links when this is non-empty.
+   */
+  get bookingMailtoForAction(): string {
+    return this.bookingMailto || this.bookingMailtoAlt;
+  }
 }
