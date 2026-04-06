@@ -10,23 +10,42 @@
         <div class="pill">{{ r.icon }} {{ r.name }}</div>
       }
     </div>
-    <div class="rep-footnote-wrap" appRevealOnScroll>
-      <p class="rep-footnote-box">{{ repertoireFootnote }}</p>
-      @if (repertoireMusicLink; as ml) {
-        <p class="rep-footnote-link-wrap">
-          <a class="rep-footnote-link" [href]="ml.href">{{ ml.label }}</a>
-        </p>
-      }
-    </div>
-    @if (musicAnchorId) {
-      <p
-        class="rep-listen-note"
-        [attr.id]="musicAnchorId"
-        tabindex="-1"
+    @if (repertoireAppleMusicNote) {
+      <aside
+        class="rep-apple-callout"
         appRevealOnScroll
+        aria-label="Apple Music — original recordings"
       >
-        {{ repertoireListenBlurb }}
-      </p>
+        <span class="rep-apple-badge">Coming soon</span>
+        <p class="rep-apple-text">{{ repertoireAppleMusicNote }}</p>
+      </aside>
+    }
+    @if (
+      repertoireFootnoteLead?.trim() ||
+      repertoireFootnote?.trim() ||
+      repertoireMusicLink
+    ) {
+      <div class="rep-footnote-wrap" appRevealOnScroll>
+        @if (repertoireFootnoteLead?.trim() || repertoireFootnote?.trim()) {
+          <div class="rep-footnote-box">
+            @if (repertoireFootnoteLead) {
+              <p class="rep-footnote-lead">{{ repertoireFootnoteLead }}</p>
+            }
+            @if (repertoireFootnote?.trim()) {
+              <p class="rep-footnote-body">{{ repertoireFootnote }}</p>
+            }
+          </div>
+        }
+        @if (repertoireMusicLink; as ml) {
+          <p class="rep-footnote-link-wrap">
+            @if (ml.href) {
+              <a class="rep-footnote-link" [href]="ml.href">{{ ml.label }}</a>
+            } @else {
+              <span class="rep-footnote-standout">{{ ml.label }}</span>
+            }
+          </p>
+        }
+      </div>
     }
   </div>
 </section>

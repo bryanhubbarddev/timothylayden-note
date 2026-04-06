@@ -23,6 +23,11 @@
               <span aria-hidden="true">✉</span> {{ bookingEmailAlt }}
             </a>
           }
+          @if (bookingEmailInfo?.trim() && bookingMailtoInfo) {
+            <a [href]="bookingMailtoInfo" class="contact-email-link contact-email-link--alt">
+              <span aria-hidden="true">✉</span> {{ bookingEmailInfo }}
+            </a>
+          }
           @if (bookingMailtoForAction) {
             <div class="divider"></div>
             <a [href]="bookingMailtoForAction" class="btn-full">

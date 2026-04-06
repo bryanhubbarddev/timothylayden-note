@@ -123,10 +123,16 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
 .pill{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:999px;border:1.5px solid rgba(184,137,46,0.28);background:rgba(184,137,46,0.07);color:#7a5020;font-size:0.89rem;font-weight:500;transition:background 0.2s,transform 0.2s}
 .pill:hover{background:rgba(184,137,46,0.16);transform:scale(1.04)}
 .rep-footnote-wrap{max-width:40rem;margin:0 auto;text-align:center}
-.rep-footnote-box{margin:0;padding:clamp(1.1rem,3vw,1.35rem) clamp(1.15rem,3.5vw,1.5rem);border-radius:12px;background:rgba(255,253,248,0.95);border:1.5px solid rgba(184,137,46,0.28);box-shadow:0 4px 20px rgba(100,80,40,0.06);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:clamp(1.05rem,2.4vw,1.18rem);line-height:1.65;color:#4a3824;text-align:center}
+.rep-footnote-box{margin:0;padding:clamp(1.1rem,3vw,1.35rem) clamp(1.15rem,3.5vw,1.5rem);border-radius:12px;background:rgba(255,253,248,0.95);border:1.5px solid rgba(184,137,46,0.28);box-shadow:0 4px 20px rgba(100,80,40,0.06);text-align:center}
+.rep-footnote-lead{margin:0 0 0.85rem;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.2rem,2.4vw,1.45rem);font-weight:600;font-style:italic;line-height:1.3;color:#b8892e}
+.rep-footnote-lead:last-child{margin-bottom:0}
+.rep-footnote-body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:clamp(1.05rem,2.4vw,1.18rem);line-height:1.65;color:#4a3824}
 .rep-footnote-link-wrap{margin:0.9rem 0 0}
 .rep-footnote-link{font-weight:600;color:#8a6a2a;text-decoration:underline;text-underline-offset:0.2em}
-.rep-listen-note{text-align:center;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:clamp(0.98rem,2.1vw,1.08rem);line-height:1.6;color:#5c4a38;max-width:36rem;margin:1.25rem auto 0;padding:1rem 1.25rem;border-radius:12px;background:rgba(184,137,46,0.09);border:1px solid rgba(184,137,46,0.2)}
+.rep-footnote-standout{font-weight:600;color:#8a6a2a}
+.rep-apple-callout{max-width:40rem;margin:0 auto 1.5rem;padding:clamp(1rem,2.5vw,1.2rem) clamp(1.15rem,3vw,1.4rem);text-align:center;border-radius:14px;border:1px solid rgba(184,137,46,0.24);background:rgba(255,253,248,0.94);box-shadow:0 4px 20px rgba(100,80,40,0.06)}
+.rep-apple-badge{display:inline-block;font-size:0.62rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b8892e;margin-bottom:0.55rem;padding:0.35rem 0.65rem;border-radius:999px;border:1px solid rgba(184,137,46,0.35);background:rgba(184,137,46,0.08)}
+.rep-apple-text{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(0.98rem,2.1vw,1.12rem);line-height:1.65;color:#4a3824;font-style:italic;font-weight:500}
 
 /* GALLERY */
 .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -311,11 +317,15 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
         <div class="pill">&#x1F3BC; Classical</div>
         <div class="pill">&#x1F3B9; Request-Friendly</div>
       </div>
+      <aside class="rep-apple-callout reveal" aria-label="Apple Music — original recordings">
+        <span class="rep-apple-badge">Coming soon</span>
+        <p class="rep-apple-text">Original recordings are in preparation for publication and will be coming soon to Apple Music. Stay tuned for the official release.</p>
+      </aside>
       <div class="rep-footnote-wrap reveal">
-        <p class="rep-footnote-box">Timothy takes song requests when it fits the event. He pays attention to the room and adjusts the music so guests feel comfortable and the mood stays relaxed.</p>
-        <p class="rep-footnote-link-wrap"><a class="rep-footnote-link" href="#listen">Listen-at-home music &#8212; coming soon</a></p>
+        <div class="rep-footnote-box">
+          <p class="rep-footnote-lead">Music on demand &#8212; Apple Music</p>
+        </div>
       </div>
-      <p id="listen" class="rep-listen-note reveal" tabindex="-1">Recorded music you can enjoy at home is not on the site yet. It will be added here when it is ready.</p>
     </div>
   </section>
 
@@ -350,9 +360,9 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
           <div class="contact-card">
             <p class="card-label">Direct Booking Contact</p>
             <h3 class="contact-name">Timothy Layden</h3>
-            <a href="mailto:timothy.layden@yahoo.com" class="contact-email-link"><span>&#x2709;</span> timothy.layden@yahoo.com</a>
+            <a href="mailto:info@timothylayden.com" class="contact-email-link"><span>&#x2709;</span> info@timothylayden.com</a>
             <div class="divider"></div>
-            <a href="mailto:timothy.layden@yahoo.com" class="btn-full"><span>Send a Message</span><span>&#8594;</span></a>
+            <a href="mailto:info@timothylayden.com" class="btn-full"><span>Send a Message</span><span>&#8594;</span></a>
           </div>
         </div>
       </div>
@@ -365,9 +375,9 @@ html,body{background:#f5efe6!important;background-color:#f5efe6!important;color:
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="brand-circle" style="width:36px;height:36px"><span class="brand-initials" style="font-size:0.8rem">TL</span></div>
-      <div><p class="footer-name">Timmy Layden</p><p class="footer-sub">Live Piano Performance</p></div>
+      <div><p class="footer-name">Timothy Layden</p><p class="footer-sub">Live Piano Performance</p></div>
     </div>
-    <p class="footer-copy">&#169; 2025 Timmy Layden. All rights reserved.</p>
+    <p class="footer-copy">&#169; 2026 Timothy Layden and Bryan Hubbard. All rights reserved.</p>
   </div>
 </footer>
 

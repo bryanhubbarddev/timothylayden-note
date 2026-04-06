@@ -25,6 +25,19 @@
   gap: 13px;
   flex: 1;
 }
+a.brand-mailto {
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+  border-radius: 12px;
+  outline-offset: 4px;
+}
+a.brand-mailto:hover .brand-name-text {
+  color: var(--color-accent, #b8892e);
+}
+a.brand-mailto:focus-visible {
+  outline: 2px solid var(--color-accent, #b8892e);
+}
 .brand-circle {
   width: 44px;
   height: 44px;
@@ -74,6 +87,10 @@
   padding: 0;
   cursor: pointer;
 }
+.nav-links a.nav-book {
+  text-decoration: none;
+  display: inline-block;
+}
 .nav-links a:hover,
 .nav-links button:hover {
   color: var(--color-accent, #b8892e);
@@ -91,6 +108,10 @@
 .nav-book:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 20px rgba(184, 137, 46, 0.4) !important;
+}
+.nav-links a.nav-book:focus-visible {
+  outline: 2px solid var(--color-accent, #b8892e);
+  outline-offset: 3px;
 }
 @media (max-width: 860px) {
   .nav-links {

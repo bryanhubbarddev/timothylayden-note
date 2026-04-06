@@ -307,7 +307,7 @@
   border-color: rgba(184, 137, 46, 0.25);
 }
 a.focus-item { text-decoration: none; }
-.scroll-hint {
+.scroll-hint--desktop {
   position: absolute;
   bottom: 145px;
   left: 50%;
@@ -319,6 +319,27 @@ a.focus-item { text-decoration: none; }
   font-size: 0.62rem;
   letter-spacing: 0.18em;
   color: #9a7a40;
+  margin: 0;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s;
+}
+.scroll-hint--desktop:hover {
+  color: #7a5a28;
+}
+.scroll-hint--desktop:focus-visible {
+  outline: 2px solid var(--color-accent, #b8892e);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+@media (max-width: 768px) {
+  .scroll-hint--desktop {
+    display: none;
+  }
 }
 .scroll-hint-mark {
   font-family: var(--font-display);

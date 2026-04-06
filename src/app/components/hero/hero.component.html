@@ -57,8 +57,13 @@
       </div>
     </div>
   </div>
-  <div class="scroll-hint" aria-label="Scroll to continue">
-    <div class="scroll-bar" aria-hidden="true"></div>
+  <button
+    type="button"
+    class="scroll-hint scroll-hint--desktop"
+    (click)="scrollTo('experience')"
+    aria-label="Scroll to experience section"
+  >
+    <span class="scroll-bar" aria-hidden="true"></span>
     <span class="scroll-hint-mark" aria-hidden="true">♪ ♫ ★</span>
-  </div>
+  </button>
 </section>

@@ -31,4 +31,6 @@ import { ContactComponent } from './components/contact/contact.component';
 export class App {
   private siteContent = inject(SiteContentService);
   d: SiteData = this.siteContent.getContent();
+  /** Current year for copyright line in footer. */
+  readonly copyrightYear = new Date().getFullYear();
 }

@@ -14,16 +14,8 @@ import type {
 })
 export class RepertoireComponent {
   @Input({ required: true }) repertoire!: SiteRepertoireItem[];
-  @Input({ required: true }) repertoireFootnote!: string;
+  @Input() repertoireFootnote?: string;
+  @Input() repertoireFootnoteLead?: string;
+  @Input() repertoireAppleMusicNote?: string;
   @Input() repertoireMusicLink?: SiteRepertoireMusicLink;
-  @Input() repertoireListenBlurb?: string;
-
-  /** Target id for same-page #anchor + blurb (e.g. listen). */
-  get musicAnchorId(): string | null {
-    const h = this.repertoireMusicLink?.href;
-    if (!h?.startsWith("#") || h.length < 2 || !this.repertoireListenBlurb?.trim()) {
-      return null;
-    }
-    return h.slice(1);
-  }
 }

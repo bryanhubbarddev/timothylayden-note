@@ -17,9 +17,9 @@ export interface SiteRepertoireItem {
   name: string;
 }
 
-/** Link from repertoire footnote (e.g. #listen on this page, or a streaming URL when ready). */
+/** Teaser or link from repertoire footnote (e.g. Spotify when ready). Omit `href` for label-only. */
 export interface SiteRepertoireMusicLink {
-  href: string;
+  href?: string;
   label: string;
 }
 
@@ -56,6 +56,8 @@ export interface SiteData {
   bookingEmail: string;
   /** Optional secondary booking email (e.g. alternate inbox). */
   bookingEmailAlt?: string;
+  /** Optional third contact address (e.g. info@). */
+  bookingEmailInfo?: string;
   bookingContact: string;
   location: string;
   stats: SiteStat[];
@@ -63,16 +65,20 @@ export interface SiteData {
   highlights: string[];
   experience: SiteExperience[];
   repertoire: SiteRepertoireItem[];
-  /** Short note under repertoire pills; plain language for clarity. */
-  repertoireFootnote: string;
-  /** Optional link (e.g. #listen or Spotify when available). */
+  /** Optional body under repertoire pills (below optional lead). */
+  repertoireFootnote?: string;
+  /** Optional title line in the footnote card (e.g. Music on demand — Apple Music). */
+  repertoireFootnoteLead?: string;
+  /** Optional Apple Music / recordings teaser (shown between pills and footnote). */
+  repertoireAppleMusicNote?: string;
+  /** Optional teaser or outbound link when on-demand audio is available. */
   repertoireMusicLink?: SiteRepertoireMusicLink;
-  /** Shown at in-page #anchor when repertoireMusicLink uses a same-page hash. */
-  repertoireListenBlurb?: string;
   gallery: SiteGalleryItem[];
   videos: SiteVideo[];
   /** Google Photos (or similar) albums — links below the grid. Empty [] = hidden. */
   photoAlbumLinks: SiteExternalPhotoAlbum[];
+  /** Second name on the site footer copyright line (e.g. developer). */
+  footerCreditPartner?: string;
 }
 
 export const siteContent: SiteData = {
@@ -81,7 +87,7 @@ export const siteContent: SiteData = {
     "Timothy Layden brings elegance, versatility, and a polished presence to restaurants, weddings, churches, cocktail hours, receptions, and special events — adjusting to the audience and shaping the atmosphere with care.",
   heroImage: "assets/TimFront.png",
   heroImageAlt: "Timothy Layden — live piano performer",
-  bookingEmail: "timothy.layden@yahoo.com",
+  bookingEmail: "info@timothylayden.com",
   bookingContact: "Timothy Layden",
   location: "Based in Florida • Available Statewide & Beyond",
   stats: [
@@ -180,14 +186,9 @@ export const siteContent: SiteData = {
     { icon: "♬", name: "Classical" },
     { icon: "𝄞", name: "Request-Friendly" },
   ],
-  repertoireFootnote:
-    "Timothy takes song requests when it fits the event. He pays attention to the room and adjusts the music so guests feel comfortable and the mood stays relaxed.",
-  repertoireMusicLink: {
-    href: "#listen",
-    label: "Listen-at-home music — coming soon",
-  },
-  repertoireListenBlurb:
-    "Recorded music you can enjoy at home is not on the site yet. It will be added here when it is ready.",
+  repertoireFootnoteLead: "Music on demand — Apple Music",
+  repertoireAppleMusicNote:
+    "Original recordings are in preparation for publication and will be coming soon to Apple Music. Stay tuned for the official release.",
   gallery: [
     {
       src: "assets/TimPiano.png",
@@ -236,4 +237,5 @@ export const siteContent: SiteData = {
     },
   ],
   photoAlbumLinks: [],
+  footerCreditPartner: "Bryan Hubbard",
 };
