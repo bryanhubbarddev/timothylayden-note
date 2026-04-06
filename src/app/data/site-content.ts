@@ -94,7 +94,7 @@ export const siteContent: SiteData = {
       icon: "🍝",
       label:
         "Carmella's Lakeway — Past venue; Italian in the heart of Lakeway",
-      url: "https://carmellaslakeway.com",
+      url: "https://www.carmelaslakeway.com/",
     },
     {
       icon: "🍝",
