@@ -12,18 +12,25 @@
         <div class="contact-card">
           <p class="card-label">Direct Booking Contact</p>
           <h3 class="contact-name">{{ bookingContact }}</h3>
-          <a [href]="bookingMailto" class="contact-email-link">
-            <span aria-hidden="true">✉</span> {{ bookingEmail }}
-          </a>
-          @if (bookingEmailAlt?.trim()) {
+          <!-- Why @if: an anchor with href="" behaves like "go to current page" when clicked. -->
+          @if (bookingMailto) {
+            <a [href]="bookingMailto" class="contact-email-link">
+              <span aria-hidden="true">✉</span> {{ bookingEmail }}
+            </a>
+          }
+          @if (bookingEmailAlt?.trim() && bookingMailtoAlt) {
             <a [href]="bookingMailtoAlt" class="contact-email-link contact-email-link--alt">
               <span aria-hidden="true">✉</span> {{ bookingEmailAlt }}
             </a>
           }
-          <div class="divider"></div>
-          <a [href]="bookingMailto" class="btn-full">
-            <span>Send Booking Request</span><span>→</span>
-          </a>
+          @if (bookingMailtoForAction) {
+            <div class="divider"></div>
+            <a [href]="bookingMailtoForAction" class="btn-full">
+              <span>Send Booking Request</span><span>→</span>
+            </a>
+          } @else {
+            <p class="contact-email-missing">Booking email is not set up yet. Please check back soon.</p>
+          }
         </div>
       </div>
     </div>

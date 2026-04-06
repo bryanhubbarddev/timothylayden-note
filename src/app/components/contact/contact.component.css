@@ -132,6 +132,17 @@
 .contact-email-link:hover {
   color: #8a6020;
 }
+.contact-email-missing {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px dashed rgba(184, 137, 46, 0.35);
+  background: rgba(184, 137, 46, 0.05);
+  color: #7a6040;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  text-align: center;
+}
 .divider {
   height: 1px;
   background: rgba(184, 137, 46, 0.14);

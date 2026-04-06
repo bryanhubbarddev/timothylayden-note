@@ -50,6 +50,11 @@ export class BookingAssistantService {
     ].join("\n");
   }
 
+  /**
+   * Calls Gemini from the browser with the API key in the query string. That
+   * exposes the key to anyone who loads the client bundle; production sites
+   * that need a private key should proxy this request server-side instead.
+   */
   sendMessage(
     systemPrompt: string,
     history: { role: "user" | "model"; text: string }[],

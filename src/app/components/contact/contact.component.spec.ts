@@ -26,4 +26,21 @@ describe("ContactComponent", () => {
         encodeURIComponent("Booking Request — live piano"),
     );
   });
+
+  it("does not render mailto links when bookingEmail is blank", () => {
+    fixture.componentRef.setInput("bookingEmail", "");
+    fixture.detectChanges();
+    const mailtoAnchors = fixture.nativeElement.querySelectorAll(
+      'a[href^="mailto:"]',
+    );
+    expect(mailtoAnchors.length).toBe(0);
+  });
+
+  it("uses alternate email for CTA when primary is blank but alt is set", () => {
+    fixture.componentRef.setInput("bookingEmail", "");
+    fixture.componentRef.setInput("bookingEmailAlt", "alt@example.com");
+    fixture.detectChanges();
+    const btn = fixture.nativeElement.querySelector("a.btn-full");
+    expect(btn?.getAttribute("href")).toContain("alt@example.com");
+  });
 });

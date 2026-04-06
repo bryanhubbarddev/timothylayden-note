@@ -28,4 +28,13 @@ export class ContactComponent {
   get bookingMailtoAlt(): string {
     return this.buildMailto(this.bookingEmailAlt || '');
   }
+
+  /**
+   * First usable mailto URL for the main CTA. Empty `href` on `<a>` would
+   * navigate to the current page when clicked, so the template only renders
+   * links when this is non-empty.
+   */
+  get bookingMailtoForAction(): string {
+    return this.bookingMailto || this.bookingMailtoAlt;
+  }
 }

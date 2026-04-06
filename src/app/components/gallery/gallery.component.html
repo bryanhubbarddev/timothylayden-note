@@ -7,7 +7,7 @@
       <div class="rule"><div class="rule-line"></div><span class="rule-note">♪</span><div class="rule-line rev"></div></div>
     </div>
     <div class="gal-grid">
-      @for (img of gallery; track img.alt) {
+      @for (img of gallery; track img.src) {
         <figure class="gal-card" appRevealOnScroll>
           <button
             type="button"
@@ -95,7 +95,13 @@
     aria-modal="true"
     [attr.aria-label]="lightbox.alt"
   >
-    <button type="button" class="lightbox-close" (click)="closeLightbox()" aria-label="Close image">
+    <button
+      #lightboxCloseBtn
+      type="button"
+      class="lightbox-close"
+      (click)="closeLightbox()"
+      aria-label="Close image"
+    >
       ×
     </button>
     <img class="lightbox-img" [src]="lightbox.src" [alt]="lightbox.alt" />
