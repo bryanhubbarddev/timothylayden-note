@@ -30,12 +30,15 @@ export interface SiteGalleryItem {
 }
 
 /**
- * In-page video: use **fileSrc** (MP4/WebM under `assets/`) or **embedSrc** (YouTube/Vimeo iframe URL).
+ * In-page video: use **fileSrc** (MP4/WebM under `assets/`) or **embedSrc** (YouTube/Vimeo/Facebook iframe URL).
  * Provide exactly one of `fileSrc` or `embedSrc` per item.
  */
 export interface SiteVideo {
   title: string;
-  /** YouTube/Vimeo embed URL, e.g. https://www.youtube.com/embed/VIDEO_ID */
+  /**
+   * Embed URL: YouTube `/embed/…`, Vimeo `player.vimeo.com/video/…`, or Facebook
+   * `www.facebook.com/plugins/video.php?href=…` (href = encoded watch/reel URL).
+   */
   embedSrc?: string;
   /** Self-hosted file, e.g. assets/clip.mp4 — export from Google Photos/phone as MP4 for best browser support */
   fileSrc?: string;
@@ -254,19 +257,11 @@ export const siteContent: SiteData = {
   ],
   /**
    * Videos section (after Gallery): embedSrc (YouTube/Vimeo) and/or fileSrc (MP4 in src/assets/).
+   * Ordered oldest → newest by performance year in the title; undated Facebook clips last.
    * Empty [] hides the section and the Videos nav link.
    * Optional outbound albums: photoAlbumLinks (empty [] = hidden).
    */
   videos: [
-    {
-      title:
-        'Timothy Layden & World-Renowned Trumpet Guest: "Wind Beneath My Wings" Live at Navarre RV Resort 2026',
-      embedSrc: "https://www.youtube.com/embed/pmlyD9VeHfc",
-    },
-    {
-      title: "Timothy Layden and Team Live at Navarre RV Resort 2025",
-      embedSrc: "https://www.youtube.com/embed/H-GM6FKVCOA",
-    },
     {
       title:
         "Timothy Layden Performs at Dancing with the Stars Corpus Christi Gala 2015",
@@ -276,6 +271,33 @@ export const siteContent: SiteData = {
       title:
         "Timothy Layden performs with Trans-Siberian Orchestra in Dripping Springs, Texas 2021",
       embedSrc: "https://www.youtube.com/embed/Ln7CE20dSjk",
+    },
+    {
+      title: "Timothy Layden and Team Live at Navarre RV Resort 2025",
+      embedSrc: "https://www.youtube.com/embed/H-GM6FKVCOA",
+    },
+    {
+      title:
+        'Timothy Layden & World-Renowned Trumpet Guest: "Wind Beneath My Wings" Live at Navarre RV Resort 2026',
+      embedSrc: "https://www.youtube.com/embed/pmlyD9VeHfc",
+    },
+    {
+      title:
+        "Timothy Layden — Navarre Beach Camping Resort (Facebook Reel)",
+      embedSrc:
+        "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D2334130703756281&show_text=0&width=560",
+    },
+    {
+      title:
+        "Italian potluck & live piano — Timothy Layden at Navarre Beach Camping Resort (Facebook)",
+      embedSrc:
+        "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D1253544263484984&show_text=0&width=560",
+    },
+    {
+      title:
+        "Chris, Tim & Eli — live at Navarre Beach Camping Resort (Facebook)",
+      embedSrc:
+        "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D1576972880401056&show_text=0&width=560",
     },
   ],
   photoAlbumLinks: [],

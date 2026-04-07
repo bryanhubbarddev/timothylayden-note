@@ -39,6 +39,23 @@ export class VideosComponent {
       if (host === 'player.vimeo.com') {
         return u.pathname.startsWith('/video/');
       }
+      if (host === 'www.facebook.com' && u.pathname === '/plugins/video.php') {
+        const hrefParam = u.searchParams.get('href');
+        if (!hrefParam) return false;
+        try {
+          const inner = new URL(hrefParam);
+          if (inner.protocol !== 'https:') return false;
+          const h = inner.hostname.toLowerCase();
+          return (
+            h === 'www.facebook.com' ||
+            h === 'facebook.com' ||
+            h === 'm.facebook.com' ||
+            h.endsWith('.facebook.com')
+          );
+        } catch {
+          return false;
+        }
+      }
       return false;
     } catch {
       return false;

@@ -8,5 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class FooterComponent {
   @Input() stageName = '';
-  year = new Date().getFullYear();
+  @Input() footerCreditPartner = '';
+  @Input() footerCreditPartnerGithubUrl = '';
+  readonly year = new Date().getFullYear();
 }

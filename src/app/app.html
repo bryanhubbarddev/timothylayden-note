@@ -36,27 +36,9 @@
     />
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="site-footer-inner">
-      <p class="site-footer-copy">
-        @if (d.footerCreditPartner?.trim()) {
-          © {{ copyrightYear }} {{ d.stageName }} and
-          @if (d.footerCreditPartnerGithubUrl?.trim()) {
-            <a
-              class="site-footer-credit-link"
-              [href]="d.footerCreditPartnerGithubUrl!.trim()"
-              target="_blank"
-              rel="noopener noreferrer"
-              [attr.aria-label]="d.footerCreditPartner + ' on GitHub (opens in new tab)'"
-              >{{ d.footerCreditPartner }}</a>.
-          } @else {
-            {{ d.footerCreditPartner }}.
-          }
-          All rights reserved.
-        } @else {
-          © {{ copyrightYear }} {{ d.stageName }}. All rights reserved.
-        }
-      </p>
-    </div>
-  </footer>
+  <app-footer
+    [stageName]="d.stageName"
+    [footerCreditPartner]="d.footerCreditPartner ?? ''"
+    [footerCreditPartnerGithubUrl]="d.footerCreditPartnerGithubUrl ?? ''"
+  />
 </div>

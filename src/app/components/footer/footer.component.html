@@ -7,7 +7,25 @@
         <p class="footer-sub">Live Piano Performance</p>
       </div>
     </div>
-    <p class="footer-copy">© {{ year }} {{ stageName }}. All rights reserved.</p>
+    <p class="footer-copy">
+      @if (footerCreditPartner.trim()) {
+        © {{ year }} {{ stageName }} and
+        @if (footerCreditPartnerGithubUrl.trim()) {
+          <a
+            class="footer-credit-link"
+            [href]="footerCreditPartnerGithubUrl.trim()"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="footerCreditPartner + ' on GitHub (opens in new tab)'"
+            >{{ footerCreditPartner }}</a>.
+        } @else {
+          {{ footerCreditPartner }}.
+        }
+        All rights reserved.
+      } @else {
+        © {{ year }} {{ stageName }}. All rights reserved.
+      }
+    </p>
     <div class="footer-keys" aria-hidden="true">
       <div class="fwk"></div><div class="fwk"></div><div class="fbk"></div>
       <div class="fwk"></div><div class="fbk"></div><div class="fwk"></div>

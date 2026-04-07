@@ -43,4 +43,42 @@ describe("ContactComponent", () => {
     const btn = fixture.nativeElement.querySelector("a.btn-full");
     expect(btn?.getAttribute("href")).toContain("alt@example.com");
   });
+
+  it("bookingMailtoInfo includes mailto when bookingEmailInfo is set", () => {
+    fixture.componentRef.setInput("bookingEmailInfo", "info@example.com");
+    expect(component.bookingMailtoInfo).toBe(
+      "mailto:info@example.com?subject=" +
+        encodeURIComponent("Booking Request — live piano"),
+    );
+  });
+
+  it("bookingMailtoForAction falls back to info when primary and alt are blank", () => {
+    fixture.componentRef.setInput("bookingEmail", "");
+    fixture.componentRef.setInput("bookingEmailAlt", "");
+    fixture.componentRef.setInput("bookingEmailInfo", "info@example.com");
+    expect(component.bookingMailtoForAction).toContain("info@example.com");
+  });
+
+  it("renders info email link in the card when bookingEmailInfo is set", () => {
+    fixture.componentRef.setInput("bookingContact", "Tim");
+    fixture.componentRef.setInput("bookingEmail", "primary@example.com");
+    fixture.componentRef.setInput("bookingEmailInfo", "info@example.com");
+    fixture.detectChanges();
+    const links = fixture.nativeElement.querySelectorAll("a.contact-email-link");
+    const infoLink = Array.from(links as NodeListOf<HTMLAnchorElement>).find(
+      (a) => a.textContent?.includes("info@example.com"),
+    );
+    expect(infoLink).toBeTruthy();
+    expect(infoLink!.getAttribute("href")).toContain("info@example.com");
+  });
+
+  it("CTA href uses bookingEmailInfo when primary and alt are empty", () => {
+    fixture.componentRef.setInput("bookingContact", "Tim");
+    fixture.componentRef.setInput("bookingEmail", "");
+    fixture.componentRef.setInput("bookingEmailAlt", "");
+    fixture.componentRef.setInput("bookingEmailInfo", "info@example.com");
+    fixture.detectChanges();
+    const btn = fixture.nativeElement.querySelector("a.btn-full");
+    expect(btn?.getAttribute("href")).toContain("info@example.com");
+  });
 });

@@ -12,6 +12,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { VideosComponent } from './components/videos/videos.component';
 import { TBluBlogComponent } from './components/t-blu-blog/t-blu-blog.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ import { ContactComponent } from './components/contact/contact.component';
     VideosComponent,
     TBluBlogComponent,
     ContactComponent,
+    FooterComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
@@ -35,6 +37,4 @@ import { ContactComponent } from './components/contact/contact.component';
 export class App {
   private siteContent = inject(SiteContentService);
   d: SiteData = this.siteContent.getContent();
-  /** Current year for copyright line in footer. */
-  readonly copyrightYear = new Date().getFullYear();
 }
