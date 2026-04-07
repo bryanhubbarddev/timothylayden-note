@@ -1,0 +1,46 @@
+@if (videos.length) {
+  <div class="videos-root">
+    <section class="section" id="videos" aria-labelledby="videos-heading">
+      <div class="section-wrap">
+        <div class="section-head" appRevealOnScroll>
+          <span class="eyebrow">Videos</span>
+          <h2 id="videos-heading">Hear Timothy at the piano — live and on camera</h2>
+          <div class="rule">
+            <div class="rule-line"></div>
+            <span class="rule-note">♫</span>
+            <div class="rule-line rev"></div>
+          </div>
+        </div>
+        <div class="video-grid">
+          @for (v of videos; track videoTrackKey(v)) {
+            <div class="video-card">
+              <p class="video-title">{{ v.title }}</p>
+              <div class="video-embed">
+                @if (v.fileSrc) {
+                  <video
+                    class="video-native"
+                    controls
+                    playsinline
+                    preload="metadata"
+                    [title]="v.title"
+                  >
+                    <source [src]="v.fileSrc" />
+                    Your browser does not support embedded video.
+                  </video>
+                } @else if (v.embedSrc) {
+                  <iframe
+                    [title]="v.title"
+                    [src]="safeEmbed(v.embedSrc)"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+}

@@ -228,13 +228,18 @@ export const siteContent: SiteData = {
     },
   ],
   /**
-   * In-page: embedSrc (YouTube/Vimeo) and/or fileSrc (MP4 in src/assets/).
+   * Videos section (after Gallery): embedSrc (YouTube/Vimeo) and/or fileSrc (MP4 in src/assets/).
+   * Empty [] hides the section and the Videos nav link.
    * Optional outbound albums: photoAlbumLinks (empty [] = hidden).
    */
   videos: [
     {
       title: "Dancing with the Corpus Christi Stars — live piano",
       embedSrc: "https://www.youtube.com/embed/GZ-1Pp3OD9k",
+    },
+    {
+      title: "Live piano performance",
+      embedSrc: "https://www.youtube.com/embed/Ln7CE20dSjk",
     },
   ],
   photoAlbumLinks: [],

@@ -9,6 +9,7 @@ import { HeroComponent } from './components/hero/hero.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { RepertoireComponent } from './components/repertoire/repertoire.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { VideosComponent } from './components/videos/videos.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 @Component({
@@ -23,6 +24,7 @@ import { ContactComponent } from './components/contact/contact.component';
     ExperienceComponent,
     RepertoireComponent,
     GalleryComponent,
+    VideosComponent,
     ContactComponent,
   ],
   templateUrl: './app.html',

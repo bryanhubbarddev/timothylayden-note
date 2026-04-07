@@ -3,7 +3,11 @@
 <app-floating-notes />
 
 <div class="shell">
-  <app-nav [stageName]="d.stageName" [bookingEmail]="d.bookingEmail" />
+  <app-nav
+    [stageName]="d.stageName"
+    [bookingEmail]="d.bookingEmail"
+    [hasVideos]="d.videos.length > 0"
+  />
 
   <app-hero [data]="d" />
 
@@ -17,7 +21,12 @@
       [repertoireRecordingTeaser]="d.repertoireRecordingTeaser"
       [repertoireMusicLink]="d.repertoireMusicLink"
     />
-    <app-gallery [gallery]="d.gallery" [videos]="d.videos" [photoAlbumLinks]="d.photoAlbumLinks" />
+    <app-gallery
+      [gallery]="d.gallery"
+      [photoAlbumLinks]="d.photoAlbumLinks"
+      [linkToVideosSection]="d.videos.length > 0"
+    />
+    <app-videos [videos]="d.videos" />
     <app-contact [bookingEmail]="d.bookingEmail" [bookingContact]="d.bookingContact" />
   </main>
 

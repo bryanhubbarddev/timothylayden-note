@@ -26,6 +26,9 @@
       <button type="button" (click)="scrollTo('experience')">Experience</button>
       <button type="button" (click)="scrollTo('repertoire')">Repertoire</button>
       <button type="button" (click)="scrollTo('gallery')">Gallery</button>
+      @if (hasVideos) {
+        <button type="button" (click)="scrollTo('videos')">Videos</button>
+      }
       @if (bookNowMailto) {
         <a
           [href]="bookNowMailto"

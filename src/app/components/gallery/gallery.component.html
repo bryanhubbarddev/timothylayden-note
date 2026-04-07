@@ -45,40 +45,12 @@
       </div>
     }
 
-    @if (videos.length) {
-      <div class="videos-block" appRevealOnScroll>
-        <p class="videos-eyebrow">Videos</p>
-        <div class="video-grid">
-          @for (v of videos; track videoTrackKey(v)) {
-            <div class="video-card">
-              <p class="video-title">{{ v.title }}</p>
-              <div class="video-embed">
-                @if (v.fileSrc) {
-                  <video
-                    class="video-native"
-                    controls
-                    playsinline
-                    preload="metadata"
-                    [title]="v.title"
-                  >
-                    <source [src]="v.fileSrc" />
-                    Your browser does not support embedded video.
-                  </video>
-                } @else if (v.embedSrc) {
-                  <iframe
-                    [title]="v.title"
-                    [src]="safeEmbed(v.embedSrc)"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                  ></iframe>
-                }
-              </div>
-            </div>
-          }
-        </div>
-      </div>
+    @if (linkToVideosSection) {
+      <p class="gal-videos-jump" appRevealOnScroll>
+        <a class="gal-videos-jump-link" href="#videos">Watch performance videos</a>
+      </p>
     }
+
   </div>
 </section>
 

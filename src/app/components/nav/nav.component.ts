@@ -11,6 +11,8 @@ export class NavComponent {
   @Input() stageName = '';
   /** Shown in header brand mailto (same as primary booking email). */
   @Input() bookingEmail = '';
+  /** When true, show a Videos link (section is omitted when `videos` is empty). */
+  @Input() hasVideos = false;
   private scroll = inject(ScrollService);
 
   /** Empty when no email — brand is not a link. */
