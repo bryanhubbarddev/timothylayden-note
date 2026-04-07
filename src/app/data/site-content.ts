@@ -107,6 +107,7 @@ export const siteContent: SiteData = {
   heroImage: "assets/TimFront.png",
   heroImageAlt: "Timothy Layden — live piano performer",
   bookingEmail: "info@timothylayden.com",
+  bookingEmailAlt: "timothy.layden@yahoo.com",
   bookingContact: "Timothy Layden",
   location: "Based in Florida • Available Statewide & Beyond",
   stats: [
