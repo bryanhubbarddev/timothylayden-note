@@ -10,6 +10,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { RepertoireComponent } from './components/repertoire/repertoire.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { VideosComponent } from './components/videos/videos.component';
+import { TBluBlogComponent } from './components/t-blu-blog/t-blu-blog.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 @Component({
@@ -25,6 +26,7 @@ import { ContactComponent } from './components/contact/contact.component';
     RepertoireComponent,
     GalleryComponent,
     VideosComponent,
+    TBluBlogComponent,
     ContactComponent,
   ],
   templateUrl: './app.html',

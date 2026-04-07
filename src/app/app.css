@@ -47,6 +47,23 @@
   color: #7a6040;
   letter-spacing: 0.03em;
 }
+.site-footer-credit-link {
+  color: var(--color-accent, #b8892e);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(184, 137, 46, 0.45);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+.site-footer-credit-link:hover {
+  color: #9a7328;
+  text-decoration-color: rgba(154, 115, 40, 0.7);
+}
+.site-footer-credit-link:focus-visible {
+  outline: 2px solid var(--color-accent, #b8892e);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
 /* Reveal on scroll — used by RevealOnScrollDirective */
 .reveal {

@@ -47,6 +47,21 @@ export interface SiteExternalPhotoAlbum {
   label: string;
 }
 
+/** Optional T-Blu Blog post (add `href` for link to Medium, Substack, etc.). */
+export interface SiteTBluBlogPost {
+  title: string;
+  date?: string;
+  excerpt?: string;
+  href?: string;
+}
+
+export interface SiteTBluBlog {
+  eyebrow: string;
+  heading: string;
+  intro: string;
+  posts?: SiteTBluBlogPost[];
+}
+
 export interface SiteData {
   stageName: string;
   subheadline: string;
@@ -77,8 +92,12 @@ export interface SiteData {
   videos: SiteVideo[];
   /** Google Photos (or similar) albums — links below the grid. Empty [] = hidden. */
   photoAlbumLinks: SiteExternalPhotoAlbum[];
+  /** T-Blu Blog — performance stories & insights (posts optional). */
+  tBluBlog: SiteTBluBlog;
   /** Second name on the site footer copyright line (e.g. developer). */
   footerCreditPartner?: string;
+  /** Optional GitHub (or profile) URL for the footer credit name — opens in a new tab. */
+  footerCreditPartnerGithubUrl?: string;
 }
 
 export const siteContent: SiteData = {
@@ -192,6 +211,11 @@ export const siteContent: SiteData = {
     "Original recordings are in preparation for publication and will be available on streaming services soon. Stay tuned for the official release.",
   gallery: [
     {
+      src: "assets/ChrisTim.png",
+      alt: "Timothy Layden with Chris at the piano",
+      caption: "With Chris",
+    },
+    {
       src: "assets/TimPiano.png",
       alt: "Timothy Layden at the piano",
       caption: "At the piano",
@@ -234,14 +258,33 @@ export const siteContent: SiteData = {
    */
   videos: [
     {
-      title: "Dancing with the Corpus Christi Stars — live piano",
+      title:
+        'Timothy Layden & World-Renowned Trumpet Guest: "Wind Beneath My Wings" Live at Navarre RV Resort 2026',
+      embedSrc: "https://www.youtube.com/embed/pmlyD9VeHfc",
+    },
+    {
+      title: "Timothy Layden and Team Live at Navarre RV Resort 2025",
+      embedSrc: "https://www.youtube.com/embed/H-GM6FKVCOA",
+    },
+    {
+      title:
+        "Timothy Layden Performs at Dancing with the Stars Corpus Christi Gala 2015",
       embedSrc: "https://www.youtube.com/embed/GZ-1Pp3OD9k",
     },
     {
-      title: "Live piano performance",
+      title:
+        "Timothy Layden performs with Trans-Siberian Orchestra in Dripping Springs, Texas 2021",
       embedSrc: "https://www.youtube.com/embed/Ln7CE20dSjk",
     },
   ],
   photoAlbumLinks: [],
+  tBluBlog: {
+    eyebrow: "Lights, camera, action",
+    heading: "T-Blu Blog",
+    intro:
+      "This blog is about the experience of each performance—the energy in the room and the belief that music has real power. It adds a layer of excitement Timothy Layden brings to every song: for the crowd and for individuals. He writes about what moved him during a show, what seemed to make a difference in people's lives, and—over time—insights that can help other musicians grow in their careers.",
+    posts: [],
+  },
   footerCreditPartner: "Bryan Hubbard",
+  footerCreditPartnerGithubUrl: "https://github.com/bryanhubbarddev",
 };
